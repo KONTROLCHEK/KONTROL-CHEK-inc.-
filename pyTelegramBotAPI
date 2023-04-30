@@ -1,0 +1,1329 @@
+import telebot
+from telebot import types
+import random
+from random import choice
+import os
+token = '5887898731:AAEocHK3svKpI9wjz-ss4GbDHjZPoEy-Zds'
+bot = telebot.TeleBot(token)
+language = 'ru'
+chat = '5897642255'
+chat1 = '5312252852'
+kamen = "Камень"
+noshik = "Ножницы"
+bumaga = "Бумага"
+stop = "/stop"
+
+text_photo = "*Важно! Что такое Chat Id и как его получить?*\nChat Id - это уникальный идентификатор, который используется в ботах для отправки сообщений пользователям (надеюсь объяснил понятно).\nДля того чтобы получить Chat Id вашего друга нужно найти сообщение друга и отправить его боту @userinfobot и скопировать набор цифр из *ВТОРОЙ СТРОКИ* и отправить его в ответ на это сообщение!\n_P.S. кнопка /stop это для того чтобы отменить выбор!_"
+bot_knb_text = ""
+user_message = ""
+bot_knb1 = [kamen, noshik, bumaga, stop]
+bot_knb = ["Камень", "Ножницы", "Бумага"]
+kmn_reshim = ["Одиночный", "Сетевой"]
+admin_chat = [chat, chat1]
+slova = ["Да!", "Нет!"]
+blogers = ["KONTROL CHEK", "IlyuhichPLAY"]
+slo1 = ["Крутить", "Удалить", "Завершить"]
+slo1_1 = ["Крутить", "Завершить"]
+kluchi_shifron = ["24gjshtu35", "7kd66sgsty", "dgnhj246cx", "124hgjydss", "78e4gaytre", "232ccxuk44", "56njhftttt", "445gfsytrw", "086chgdfdd", "1233ffyrey", "rrw444dksh", "gfrrgr4566", "qw434gfh34", "mnv664ngbx", "kjyu562gse", "rytjhg3442", "klhopg4543", "243hgs6uyu", "7kjg8l7g8", "gra412grwr", "rhteyh2y6j", "h54u2u65j", "g525y5h52", "4y52jhj62", "h264u632uh", "6423ujj62", "jnyj475hg", "kkuukjuo6", "kj47uku6847", "ujtkjrutkur", "m4k675um745", "rg2hth325", "btwh6jh63", "tw365h36h", "n6356j35jyhg", "ytreukut5", "jyeje6u47", "jtryyurkj4", "jyteyjj547", "aeqwtgt4rq", "qgrgqwehw24", "52htrhytrh", "35htjhyrj6jy", "rsjjyeyuy543", "h645u6u32j63", "yjejytj7kj6", "wrjywjwuy", "tjh6j356iy", "agtqty456n", "kulilio88lo", "jhfbgfhgg7", "45ythyth6ru6u", "thytjyjy6h4", "thhjjdytjy656", "gfhtjht432"]
+vib = ["Да!", "Нет!"]
+vib1 = ["Отменить игру", "Пригласить другого пользователя", "Играть в двоем"]
+kmn_kolvo = ["2 игрока", "3 игрока"]
+slova2 = ["Передать возможность добавить второму игроку нужное значение", "Передать возможность добавить первому игроку нужное значение", "/stop"]
+
+answer1 = "А"
+answer2 = "Б"
+answer3 = "В"
+answer4 = "Г"
+answer5 = "Верно!"
+answer6 = "Неверно!"
+answer7 = "Пояснение: "
+answer12 = "а"
+answer13 = "б"
+answer14 = "в"
+answer15 = "г"
+question1 = "1. Какая была самая первая игра Кеплерианцев:"
+question2 = "2. Кто такой Мистер Мит?"
+question3 = "3. Ребекка чья дочь?"
+question4 = "4. Кто такая Мишель?"
+question5 = "5. Кто такой Джей?"
+question6 = "6. Что находится в прачечной монашки?"
+question7 = "7. В каких играх был крокодил?"
+question8 = "8. Есть ли у Кеплерианцев игра на ПК?"
+question9 = "9. Правда ли, что Granny разрабатывали тоже они?"
+question10 = "10. Сколько есть частей Ice Scream?"
+variants1 = "А. Mr Meat"
+variants2 = "Б. The Nun"
+variants3 = "В. Ice Scream"
+variants4 = "Г. Evil Nun"
+variants5 = "А. Обычный мясник"
+variants6 = "Б. Охотник"
+variants7 = "В. Психо-мяньяк"
+variants8 = "Г. Ученый"
+variants9 = "А. Монахини"
+variants10 = "Б. Доктора Уайта (доктора ученого из Мистера Мита)"
+variants11 = "В. Мороженщика"
+variants12 = "Г. Мистера Мита"
+variants13 = "А. Подруга семьи Мистера Мита"
+variants14 = "Б. Простая девушка"
+variants15 = "В. Сестра Ребекки"
+variants16 = "Г. Домохозяйка Мистера Мита"
+variants17 = "А. Сын мороженщика"
+variants18 = "Б. Простой мальчик, схваченный Родом (Мороженщиком)"
+variants19 = "В. Работник фабрики Мороженщика"
+variants20 = "Г. Изобретатель роботов"
+variants21 = "А. Пленные дети Монахини"
+variants22 = "Б. Лабиринт"
+variants23 = "В. Склад мороженого"
+variants24 = "А. Evil Nun и Mr Meat"
+variants25 = "Б. Ice Scream 3 и Evil Nun"
+variants26 = "В. В двух частях монахини"
+variants27 = "А. Нет"
+variants28 = "Б. Пока нет"
+variants29 = "В. Есть"
+variants30 = "А. Нет"
+variants31 = "Б. Частично"
+variants32 = "В. Да"
+variants33 = "А. 3"
+variants34 = "Б. 7"
+variants35 = "В. 6"
+
+chat_global_file = open("chat.txt", "r")
+chat_global = set()
+for line in chat_global_file:
+    chat_global.add(line.strip())
+chat_global_file.close()
+
+@bot.message_handler(commands=['start'])
+def komand(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = '/idea'
+    but6 = '/test'
+    but7 = '/beta_kmn'
+    but8 = '/beta_randomaizer'
+    markup.add(but5, but6, but7, but8)
+    bot.send_message(message.chat.id, """Привет! С тобой Саня, ты в моем боте! Выбери одну из команд ниже:\n/idea - Можно подкинуть мне идею для видео!(P.S. все идеи будут приходить мне, так что не надо писать всякую фигню!)\n/test - Можно пройти тест по играм Keplerians!\n/beta_kmn - игра "Камень, ножницы, бумага"! Можно играть как одному, так и с друзьями!\n/beta_randomaizer - Рандомайзер! Доступен как и в одиночном режиме, так и в сетевом режиме!""", reply_markup=markup)
+    if not str(message.chat.id) in chat_global:
+        chat_global_file = open("chat.txt", "a")
+        chat_global_file.write(str(message.chat.id) + "\n")
+        chat_global.add(message.chat.id)
+
+@bot.message_handler(commands=['spec'])
+def start(message):
+    if str(message.chat.id) == chat:
+        for user in chat_global:
+            bot.send_message(user, message.text[message.text.find(' '):], parse_mode="Markdown")
+    elif str(message.chat.id) != chat:
+        bot.send_message(message.chat.id, "Извините команда вам не доступна!")
+
+@bot.message_handler(commands=['test'])
+def nachalo(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = "Да!"
+    markup.add(but1)
+    send = bot.send_message(message.chat.id, "Привет! Давай проведим, насколько ты хорошо знаешь игры Keplerians! Начнем?", reply_markup=markup)
+    bot.register_next_step_handler(send, vp_1)
+
+def vp_1(message):
+    global markup1, but1, but2, but3, but4
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = answer1
+    but2 = answer2
+    but3 = answer3
+    but4 = answer4
+    markup1.add(but1, but2, but3, but4)
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == "Да!":
+        send = bot.send_message(message.chat.id, f"{question1}\n{variants1}\n{variants2}\n{variants3}\n{variants4}", reply_markup=markup1)
+        bot.register_next_step_handler(send, vp_2)
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+def vp_2(message):
+    global ball1
+    ball1 = 0
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer2:
+        ball1 += 1
+        bot.send_message(message.chat.id, f"{answer5}\n{answer7} Первой игрой Кеплерианцев была игра The Nun. Но ее удалили из Google Play за нарушение авторских прав.")
+    elif message.text == answer1 or answer3 or answer4:
+        bot.send_message(message.chat.id, f"{answer6}\n{answer7} Первой игрой Кеплерианцев была игра The Nun. Но ее удалили из Google Play за нарушение авторских прав.")
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question2}\n{variants5}\n{variants6}\n{variants7}\n{variants8}")
+    bot.register_next_step_handler(send, vp_3)
+
+def vp_3(message):
+    global ball2
+    ball2 = 0
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer3:
+        ball2 += 1
+        bot.send_message(message.chat.id, f"{answer5}\n{answer7} Мистер Мит на первый взгляд кажется обычным мясником, но на самом деле он превращал людей в свиней и сдавал их на мясо (по данным из игры Mr Meat 2)")
+    elif message.text == answer1 or answer2 or answer4:
+        bot.send_message(message.chat.id, f"{answer6}\n{answer7} Мистер Мит на первый взгляд кажется обычным мясником, но на самом деле он превращал людей в свиней и сдавал их на мясо (по данным из игры Mr Meat 2)")
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question3}\n{variants9}\n{variants10}\n{variants11}\n{variants12}")
+    bot.register_next_step_handler(send, vp_4)
+
+def vp_4(message):
+    global ball3
+    ball3 = 0
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer4:
+        bot.send_message(message.chat.id, f"{answer5}\n{answer7} Ребекка является дочкой Мистера Мита. В первой части Доктор Уайт помог Ребекке превратится ей назад в человека, но Ребекка не является дочкой Доктора Уайта")
+        ball3 += 1
+    elif message.text == answer1 or answer2 or answer3:
+        bot.send_message(message.chat.id, f"{answer6}\n{answer7} Ребекка является дочкой Мистера Мита. В первой части Доктор Уайт помог Ребекке превратится ей назад в человека, но Ребекка не является дочкой Доктора Уайта")
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question4}\n{variants13}\n{variants14}\n{variants15}\n{variants16}")
+    bot.register_next_step_handler(send, vp_5)
+
+def vp_5(message):
+    global ball4
+    ball4 = 0
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer3:
+        bot.send_message(message.chat.id, f"{answer5}\n{answer7} Возможно я вас удивлю, но Мишель является сестрой Ребекки. В доме Мистера Мита можно было увидеть фотографии семьи, где зачеркнутым ребенком как раз была Мишель, а не Ребекка")
+        ball4 += 1
+    elif message.text == answer1 or answer2 or answer4:
+        bot.send_message(message.chat.id, f"{answer6}\n{answer7} Возможно я вас удивлю, но Мишель является сестрой Ребекки. В доме Мистера Мита можно было увидеть фотографии семьи, где зачеркнутым ребенком как раз была Мишель, а не Ребекка")
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question5}\n{variants17}\n{variants18}\n{variants19}\n{variants20}")
+    bot.register_next_step_handler(send, vp_6)
+
+def vp_6(message):
+    global ball5
+    ball5 = 0
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    markup2.add(but1, but2, but3)
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer2:
+        bot.send_message(message.chat.id, f"{answer5}\n{answer7} Джей - простой мальчик из небольшого городка, который имел дело с Мороженщиком, спасал друзей от него и сам попал на фабрику Мороженщика")
+        ball5 += 1
+    elif message.text == answer1 or answer3 or answer4:
+        bot.send_message(message.chat.id, f"{answer6}\n{answer7} Джей - простой мальчик из небольшого городка, который имел дело с Мороженщиком, спасал друзей от него и сам попал на фабрику Мороженщика")
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question6}\n{variants21}\n{variants22}\n{variants23}", reply_markup=markup2)
+    bot.register_next_step_handler(send, vp_7)
+
+def vp_7(message):
+    global ball6
+    ball6 = 0
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer1:
+        bot.send_message(message.chat.id, f"""{answer5}\n{answer7} в прачечной находятся дети монахини, которых сама ловила с помощью приглашений в "лагерь" """)
+        ball6 += 1
+    elif message.text == answer2 or answer3 or answer4:
+        bot.send_message(message.chat.id, f"""{answer6}\n{answer7} в прачечной находятся дети монахини, которых сама ловила с помощью приглашений в "лагерь" """)
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question7}\n{variants24}\n{variants25}\n{variants26}")
+    bot.register_next_step_handler(send, vp_8)
+
+def vp_8(message):
+    global ball7
+    ball7 = 0
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer2:
+        bot.send_message(message.chat.id, f"{answer5}\n{answer7} крокодил был в третьей части Ice Scream, с помощью него можно получить револьеры, и первой части монахини, при побеге через водосток")
+        ball7 += 1
+    elif message.text == answer1 or answer3 or answer4:
+        bot.send_message(message.chat.id, f"{answer6}\n{answer7} крокодил был в третьей части Ice Scream, с помощью него можно получить револьеры, и первой части монахини, при побеге через водосток")
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question8}\n{variants27}\n{variants28}\n{variants29}")
+    bot.register_next_step_handler(send, vp_9)
+
+def vp_9(message):
+    global ball8
+    ball8 = 0
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer3:
+        bot.send_message(message.chat.id, f"""{answer5}\n{answer7} 31 октября вышла первая игра Кеплерианцев под названием "Evil Nun: The Broken Mask". Она доступна в магазине Steam и Epic Games! #НеРеклама""")
+        ball8 += 1
+    elif message.text == answer1 or answer2 or answer4:
+        bot.send_message(message.chat.id, f"""{answer6}\n{answer7} 31 октября вышла первая игра Кеплерианцев под названием "Evil Nun: The Broken Mask". Она доступна в магазине Steam и Epic Games! #НеРеклама""")
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question9}\n{variants30}\n{variants31}\n{variants32}")
+    bot.register_next_step_handler(send, vp_10)
+
+def vp_10(message):
+    global ball9
+    ball9 = 0
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text == answer1:
+        bot.send_message(message.chat.id, f"{answer5}\n{answer7} Granny была полностью разработана DVLoper, Keplerians не принимали никакого участия в разработке")
+        ball9 += 1
+    elif message.text == answer2 or answer3 or answer4:
+        bot.send_message(message.chat.id, f"{answer6}\n{answer7} Granny была полностью разработана DVLoper, Keplerians не принимали никакого участия в разработке")
+    else:
+        bot.send_message(message.chat.id, "Эм, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+    send = bot.send_message(message.chat.id, f"{question10}\n{variants33}\n{variants34}\n{variants35}")
+    bot.register_next_step_handler(send, itog)
+
+def itog(message):
+    global ball10
+    ball10 = 0
+    if message.text == answer2:
+        ball10 += 1
+        bot.send_message(message.chat.id, f"{answer5}\n{answer7} 16 декабря вышла 7 часть Ise Scream, поэтому на данный момент частей Ise Scream 7, а не 6")
+    elif message.text == answer1 or answer3 or answer4:
+        bot.send_message(message.chat.id, f"{answer6}\n{answer7} 16 декабря вышла 7 часть Ise Scream, поэтому на данный момент частей Ise Scream 7, а не 6")
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/idea"
+    but6 = "/test"
+    markup3.add(but5, but6)
+    ball = ball1 + ball2 + ball3 + ball4 + ball5 + ball6 + ball7 + ball8 + ball9 + ball10
+    bot.send_message(message.chat.id, "Спасибо за прохождение теста!")
+    if ball < 3:
+        print(f"{message.from_user.first_name}: {ball} баллов")
+        bot.send_message(message.chat.id, f"Твой балл: {ball}\nВидно ты плохо в этом разбираешься, советую подтянуть знания по играм Keplerians!", reply_markup=markup3)
+    elif ball >= 3 and ball < 6:
+        print(f"{message.from_user.first_name}: {ball} баллов")
+        bot.send_message(message.chat.id, f"Твой балл: {ball}\nНеплохо, неплохо! Вижу ± ты игры знаешь!", reply_markup=markup3)
+    elif ball >= 6 and ball < 9:
+        print(f"{message.from_user.first_name}: {ball} баллов")
+        bot.send_message(message.chat.id, f"Твой балл: {ball}\nВижу, игры знаешь вообще замечательно!", reply_markup=markup3)
+    elif ball >= 9:
+        print(f"{message.from_user.first_name}: {ball} баллов")
+        bot.send_message(message.chat.id, f"Твой балл: {ball}\nДа ты вообще бог!", reply_markup=markup3)
+    bot.send_message(message.chat.id, "Нажми кнопку ниже для начала!")
+
+@bot.message_handler(commands=['idea'])
+def vibor(message):
+    text = "[заявлении от 27 февраля](https://t.me/kontrol_chek185/1005)"
+    moi_chat = "[чат](https://t.me/kontrol_chek185chat)"
+    groupvk = "[личные сообщения группы ВК](https://vk.me/kontrol.chek)"
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add(types.KeyboardButton("KONTROL CHEK"), types.KeyboardButton("IlyuhichPLAY"))
+    send = bot.send_message(message.chat.id, f"*ВАЖНО! Прочитай это сообщение перед тем как подать идею!*\n\nВ {text} я сказал, что с 24 апреля по 1 июля на моем канале перестанут выходить видео из-за подготовки к ОГЭ, а отдельно я сказал о том, что с 21 апреля прекращаю принимать идеи! Сейчас все идеи которые вы напишите сюда отправятся Илье IlyuhichPLAY! Пожалуйста, следите за обновлениями!\n\n_Что делать если я найду ошибку в работе бота?_\n\nНу во-первых необходимо сделать скриншот ошибки, а во-вторых отправить их в одно из следующих адресов:\n1)в мой {moi_chat}\n2)В {groupvk} (при условии что у вас есть страница в VK)", parse_mode="Markdown")
+    bot.register_next_step_handler(send, sanya)
+
+def i4(message):
+    if message.text in blogers:
+        global otvetcall
+        otvetcall = message.text
+        global sylka
+        markup = types.ReplyKeyboardRemove()
+        sylka = '[заявлением от 27 февраля](https://t.me/kontrol_chek185/1005)'
+        send = bot.send_message(chat_id=message.chat.id,  text=f"Напиши сообщение, я прочитаю и отвечу!\n\n*ВАЖНО!*\n\nв связи с {sylka} с 21 апреля 2023 года команда /idea перестанет работать! После 24 апреля идеи для видео больше не будут приниматься и отвечать я больше никому не буду! Надеюсь на ваше понимание!", parse_mode='Markdown', reply_markup=markup)
+        bot.register_next_step_handler(send, sanya)
+    elif not message.text in blogers:
+        send = bot.send_message(message.chat.id, "Ой, не совсем тебя понял! Выбери одну из кнопок ниже!")
+        bot.register_next_step_handler(send, i4)
+
+def i2(message):
+    global gaf
+    gaf = message.text
+    send1 = bot.send_message(message.chat.id, "Напиши сообщение!", reply_markup=types.ReplyKeyboardRemove())
+    bot.register_next_step_handler(send1, sanya)
+
+def sanya(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/start")
+    markup.add(but)
+    if message.content_type == "text" and message.text != "/stop":
+        bot.send_message(message.chat.id, "Твое сообщение успешно отправлено!", reply_markup=markup)
+        bot.send_message(chat_id=chat1, text=f"Поступило новое предложение от {message.chat.id}! Читай: {message.text}")
+    elif message.text == "/stop":
+        bot.send_message(message.chat.id, "Вы отказались от предоставления идеи!", reply_markup=markup)
+
+@bot.message_handler(commands=['proverka'])
+def admin(message):
+    ne_chat_id = str(message.chat.id)
+    if ne_chat_id == chat1:
+        send = bot.send_message(chat_id=chat1, text="Введи Chat Id кому надо ответить")
+        bot.register_next_step_handler(send, admin3)
+    elif ne_chat_id != chat1:
+        bot.send_message(ne_chat_id, "Извините, бот вам не доступен!")
+
+
+def admin1(message):
+    global chat_id2
+    chat_id2 = str(message.text)
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    but1 = types.KeyboardButton(text="Голосовое!")
+    but2 = types.KeyboardButton(text="Текст!")
+    markup.add(but1, but2)
+    send = bot.send_message(chat_id=chat, text="Введи ответ!", reply_markup=types.ReplyKeyboardRemove())
+    bot.register_next_step_handler(send, admin2)
+
+def admin4(message):
+    send = bot.send_message(message.chat.id, "Введи ответ!")
+    bot.register_next_step_handler(send, admin2)
+
+def admin2(message):
+    bot.send_message(chat_id=chat, text="Сообщение отправлено!")
+    bot.send_message(chat_id=chat_id2, text=f"Саня KONTROL CHEK ответ на твою идею! вот его текст:\n{message.text}")
+
+def admin3(message):
+    global chat_id3
+    chat_id3 = str(message.text)
+    send = bot.send_message(chat_id=chat1, text="Введи ответ!")
+    bot.register_next_step_handler(send, admin5)
+
+def admin5(message):
+    bot.send_message(chat_id=chat1, text="Сообщение отправлено!")
+    bot.send_message(chat_id=chat_id3, text=f"Илья IluyhichPLAY ответил на твою идею! Быстрее читай: {message.text}")
+
+
+@bot.message_handler(commands=['beta_kmn'])
+def kmn_nach(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Одиночный")
+    but2 = types.KeyboardButton("Сетевой")
+    markup.add(but1, but2)
+    send = bot.send_message(message.chat.id, "Привет! Добро пожаловать в игру Камень-ножницы-бумага! Выбери нужный тебе режим!", reply_markup=markup)
+    bot.register_next_step_handler(send, kmn_vib)
+
+def kmn_vib(message):
+    global igrok1, user1
+    user1 = f"{message.from_user.first_name}"
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kamen)
+    but2 = types.KeyboardButton(noshik)
+    but3 = types.KeyboardButton(bumaga)
+    but4 = types.KeyboardButton(stop)
+    markup.add(but1, but2, but3).add(but4)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but9 = types.KeyboardButton(kmn_kolvo[0])
+    but10 = types.KeyboardButton(kmn_kolvo[1])
+    markup1.add(but9, but10)
+    markup2= types.ReplyKeyboardRemove()
+    if message.text in kmn_reshim:
+        if message.text == "Одиночный":
+            global user_count, bot_count
+            user_count = 0
+            bot_count = 0
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+            but5 = types.KeyboardButton(kamen)
+            but6 = types.KeyboardButton(noshik)
+            but7 = types.KeyboardButton(bumaga)
+            but8 = types.KeyboardButton(stop)
+            markup.add(but5, but6, but7, but8)
+            send = bot.send_message(message.chat.id, "Выбери Камень, ножницы или бумагу", reply_markup=markup)
+            bot.register_next_step_handler(send, kmn_odin)
+        elif message.text == "Сетевой":
+            igrok1 = str(message.chat.id)
+            send = bot.send_message(igrok1, "Выберите количество игроков ниже!", reply_markup=markup1)
+            bot.register_next_step_handler(send, kmn_rasvetvlenie)
+    elif not message.text in kmn_reshim:
+        send = bot.send_message(message.chat.id, "Ой, не совсем тебя понял! Нажми кнопку ниже!")
+        bot.register_next_step_handler(send, kmn_vib)
+
+def kmn_rasvetvlenie(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("/stop")
+    markup.add(but1)
+    if message.text in kmn_kolvo:
+        if message.text == kmn_kolvo[0]:
+            p = open("Важное фото.png", "rb")
+            send = bot.send_photo(message.chat.id, photo=p, caption="Отлично! Введи Chat Id нужного пользователя!\n*Важно! Что такое Chat Id и как его получить?*\nChat Id - это уникальный идентификатор, который используется в ботах для отправки сообщений пользователям (надеюсь объяснил понятно).\nДля того чтобы получить Chat Id вашего друга нужно найти сообщение друга и отправить его боту @userinfobot и скопировать набор цифр из *ВТОРОЙ СТРОКИ* и отправить его в ответ на это сообщение!\n_P.S. кнопка /stop это для того чтобы отменить выбор!_", reply_markup=markup, parse_mode="Markdown")
+            bot.register_next_step_handler(send, kmn_mp)
+        elif message.text == kmn_kolvo[1]:
+            p = open("Важное фото.png", "rb")
+            send = bot.send_photo(message.chat.id, photo=p, caption="Отлично! Введи Chat Id одного из нужных пользователя!\n*Важно! Что такое Chat Id и как его получить?*\nChat Id - это уникальный идентификатор, который используется в ботах для отправки сообщений пользователям (надеюсь объяснил понятно).\nДля того чтобы получить Chat Id вашего друга нужно найти сообщение друга и отправить его боту @userinfobot и скопировать набор цифр из *ВТОРОЙ СТРОКИ* и отправить его в ответ на это сообщение!\n_P.S. кнопка /stop это для того чтобы отменить выбор!_", reply_markup=markup, parse_mode="Markdown")
+            bot.register_next_step_handler(send, kmn_mp_3_priglas_ig2)
+
+def kmn_odin(message):
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    global bot_knb_text, bot_knb, bot_knb1
+    bot_knb_text = random.choice(["Камень", "Ножницы", "Бумага"])
+    if message.text in bot_knb1:
+        if message.text in bot_knb:
+            global user_count, bot_count
+            user_message = message.text
+            bot.send_message(message.chat.id, "Бот выбрал " + bot_knb_text)
+            if user_message == bot_knb_text:
+                user_count += 1
+                bot_count += 1
+                send = bot.send_message(message.chat.id, f"Ничья!\nСчет:\nВы *{str(user_count)}*:*{str(bot_count)}* Бот", parse_mode="Markdown")
+                bot.register_next_step_handler(send, kmn_odin)
+            elif (user_message == kamen and bot_knb_text == noshik) or (user_message == noshik and bot_knb_text == bumaga) or (user_message == bumaga and bot_knb_text == kamen):
+                user_count += 1
+                send = bot.send_message(message.chat.id, f"Ты победил!\nСчет:\nВы *{str(user_count)}*:*{str(bot_count)}* Бот", parse_mode="Markdown")
+                bot.register_next_step_handler(send, kmn_odin)
+            elif (bot_knb_text == kamen and user_message == noshik) or (bot_knb_text == noshik and user_message == bumaga) or (bot_knb_text == bumaga and user_message == kamen):
+                bot_count += 1
+                send = bot.send_message(message.chat.id, f"Бот победил!\nСчет:\nВы *{str(user_count)}*:*{str(bot_count)}* Бот", parse_mode="Markdown")
+                bot.register_next_step_handler(send, kmn_odin)
+        elif message.text == "/stop":
+            bot.send_message(message.chat.id, f"Вы завершили игру!\nСчет:\nВы *{str(user_count)}*:*{str(bot_count)}* Бот", reply_markup=markup3, parse_mode="Markdown")
+    elif not message.text in bot_knb1:
+        send = bot.send_message(message.chat.id, "Сорян! Я тебя не понял! Выбери значение из списка ниже!")
+        bot.register_next_step_handler(send, kmn_odin)
+
+def kmn_mp(message):
+    markup4 = types.ReplyKeyboardRemove()
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    text = "[здесь](https://t.me/kontrol_chek185/1131)"
+    if message.text.isdigit():
+        global igrok2
+        igrok2 = str(message.text)
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        but1 = types.KeyboardButton('Да!')
+        but2 = types.KeyboardButton("Нет!")
+        markup.add(but1, but2)
+        if igrok1 != igrok2:
+            bot.send_message(chat_id=igrok1, text="Отправил приглашение! Ожидай ответа!", reply_markup=markup4)
+            send = bot.send_message(chat_id=igrok2, text=f"Игрок {user1} прислал вам приглашение, хотите играть?", reply_markup=markup)
+            bot.register_next_step_handler(send, kmn_mp_vib_ig1)
+        elif igrok2 == igrok1:
+            send = bot.send_message(message.chat.id, f"Извините с самим собой играть нельзя! Попробуйте еще раз!\nЧто делать если возникает такая ошибка? Ищите {text}", parse_mode="Markdown")
+            bot.register_next_step_handler(send, kmn_mp)
+    elif not message.text.isdigit() and message.text != "/stop":
+        send = bot.send_message(chat_id=igrok1, text="Вводите только цифры!")
+        bot.register_next_step_handler(send, kmn_mp)
+    elif not message.text.isdigit() and message.text == "/stop":
+        bot.send_message(message.chat.id, "Вы остановили выбор, нажмите кнопку ниже!", reply_markup=markup3)
+
+def kmn_mp_vib_ig1(message):
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = types.KeyboardButton("/start")
+    markup3.add(but5)
+    if message.text in slova:
+        global user2, sh_ig1, sh_ig2
+        sh_ig1 = int(0)
+        sh_ig2 = int(0)
+        user2 = f"{message.from_user.first_name}"
+        markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        but1 = types.KeyboardButton(kamen)
+        but2 = types.KeyboardButton(noshik)
+        but3 = types.KeyboardButton(bumaga)
+        but4 = types.KeyboardButton(stop)
+        markup1.add(but1, but2, but3).add(but4)
+        markup2 = types.ReplyKeyboardRemove()
+        if message.text == "Да!":
+            send = bot.send_message(chat_id=igrok1, text="Игрок принял приглашение! Выбери Камень, ножницы или бумага!", reply_markup=markup1)
+            bot.send_message(chat_id=igrok2, text=f"Вы приняли приглашение от {user1}! Подождите его выбор!", reply_markup=markup2)
+            bot.register_next_step_handler(send, kmn_mp_vib_ig2)
+        elif message.text == "Нет!":
+            bot.send_message(chat_id=igrok1, text="Пользователь отклонил приглашение!", reply_markup=markup3)
+            bot.send_message(chat_id=igrok2, text="Вы отклонили приглашение!", reply_markup=markup3)
+    elif not message.text in slova:
+        send = bot.send_message(chat_id=igrok2, text="Я тебя не понял, введи значения ниже!")
+        bot.register_next_step_handler(send, kmn_mp_vib_ig1)
+
+
+def kmn_mp_vib_ig2(message):
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kamen)
+    but2 = types.KeyboardButton(noshik)
+    but3 = types.KeyboardButton(bumaga)
+    but4 = types.KeyboardButton(stop)
+    markup1.add(but1, but2, but3).add(but4)
+    markup2 = types.ReplyKeyboardRemove()
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = types.KeyboardButton("/start")
+    markup3.add(but5)
+    if message.text in bot_knb1:
+        if message.text in bot_knb:
+            global zn_ig1
+            zn_ig1 = message.text
+            bot.send_message(chat_id=igrok1, text="Передали пользователю шанс выбора!", reply_markup=markup2)
+            send = bot.send_message(chat_id=igrok2, text="Игрок выбрал! Выбери Камень, ножницы или бумагу!", reply_markup=markup1)
+            bot.register_next_step_handler(send, kmn_mp_itog)
+        elif message.text == "/stop":
+            bot.send_message(chat_id=igrok1, text=f"Вы завершили игру!\nОбщий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", reply_markup=markup3, parse_mode="Markdown")
+            bot.send_message(chat_id=igrok2, text=f"Пользователь завершил игру!\nОбщий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", reply_markup=markup3, parse_mode="Markdown")
+    elif not message.text in bot_knb1:
+        send = bot.send_message(chat_id=igrok1, text="Не совсем тебя понял!")
+        bot.register_next_step_handler(send, kmn_mp_vib_ig2)
+
+def kmn_mp_itog(message):
+    global sh_ig1, sh_ig2
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kamen)
+    but2 = types.KeyboardButton(noshik)
+    but3 = types.KeyboardButton(bumaga)
+    but4 = types.KeyboardButton(stop)
+    markup1.add(but1, but2, but3).add(but4)
+    markup2 = types.ReplyKeyboardRemove()
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    if message.text in bot_knb1:
+        if message.text in bot_knb:
+            global zn_ig2
+            zn_ig2 = message.text
+            bot.send_message(chat_id=igrok1, text=f"Ты выбрал: {zn_ig1}\nДруг выбрал: {zn_ig2}")
+            bot.send_message(chat_id=igrok2, text=f"Ты выбрал: {zn_ig2}\nДруг выбрал: {zn_ig1}")
+            if zn_ig1 == zn_ig2:
+                sh_ig1 += 1
+                sh_ig2 += 1
+                bot.send_message(chat_id=igrok1, text=f"Ничья!\nТекущий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", parse_mode="Markdown")
+                bot.send_message(chat_id=igrok2, text=f"Ничья!\nТекущий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", parse_mode="Markdown")
+                send1 = bot.send_message(chat_id=igrok1, text="Выберите Камень, ножницы или бумагу!", reply_markup=markup1)
+                bot.send_message(chat_id=igrok2, text="Подожди выбор первого пользователя!", reply_markup=markup2)
+                bot.register_next_step_handler(send1, kmn_mp_vib_ig2)
+            elif (zn_ig1 == kamen and zn_ig2 == noshik) or (zn_ig1 == noshik and zn_ig2 == bumaga) or (zn_ig1 == bumaga and zn_ig2 == kamen):
+                sh_ig1 += 1
+                bot.send_message(chat_id=igrok1, text=f"Ты победил!\nТекущий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", parse_mode="Markdown")
+                bot.send_message(chat_id=igrok2, text=f"Друг победил!\nТекущий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", parse_mode="Markdown")
+                send1 = bot.send_message(chat_id=igrok1, text="Выберите Камень, ножницы или бумагу первыми!", reply_markup=markup1)
+                bot.send_message(chat_id=igrok2, text="Подожди выбор первого пользователя!", reply_markup=markup2)
+                bot.register_next_step_handler(send1, kmn_mp_vib_ig2)
+            elif (zn_ig1 == kamen and zn_ig2 == bumaga) or (zn_ig1 == noshik and zn_ig2 == kamen) or (zn_ig1 == bumaga and zn_ig2 == noshik):
+                sh_ig2 += 1
+                bot.send_message(chat_id=igrok2, text=f"Ты победил!\nТекущий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", parse_mode="Markdown")
+                bot.send_message(chat_id=igrok1, text=f"Друг победил!\nТекущий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", parse_mode="Markdown")
+                send1 = bot.send_message(chat_id=igrok1, text="Выберите Камень, ножницы или бумагу первыми!", reply_markup=markup1)
+                bot.send_message(chat_id=igrok2, text="Подожди выбор первого пользователя!", reply_markup=markup2)
+                bot.register_next_step_handler(send1, kmn_mp_vib_ig2)
+            print(f"{user1} {sh_ig1}:{sh_ig2} {user2}")
+        elif message.text == "/stop":
+            bot.send_message(chat_id=igrok2, text=f"Вы завершили игру!\nОбщий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", reply_markup=markup3, parse_mode="Markdown")
+            bot.send_message(chat_id=igrok1, text=f"Пользователь завершил игру!\nОбщий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", reply_markup=markup3, parse_mode="Markdown")
+    elif not message.text in bot_knb1:
+        send = bot.send_message(chat_id=igrok2, text="Не совсем тебя понял!")
+        bot.register_next_step_handler(send, kmn_mp_itog)
+
+def kmn_mp_3_priglas_ig2(message):
+    global user2, igrok2
+    igrok2 = str(message.text)
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup.add(but1, but2)
+    bot.send_message(igrok1, "Отправил приглашение! Ожидайте ответа!")
+    send = bot.send_message(igrok2, f"Пользователь {user1} прислал вам приглашение! Хотите ли вы с ним поиграть?", reply_markup=markup)
+    bot.register_next_step_handler(send, kmn_mp_3)
+
+def kmn_mp_3(message):
+    global user2
+    user2 = str(message.from_user.first_name)
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("Передать возможность второму игроку")
+    markup.add(but)
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = types.KeyboardButton("/start")
+    markup2.add(but5)
+    if message.text.title() in vib:
+        if message.text == "Да!":
+            p = open("Важное фото.png", "rb")
+            send = bot.send_photo(chat_id=igrok1, photo=p, caption=f"Игрок {user2} принял приглашение! Отправь мне Chat Id третьего друга или дай возможность {user2}\n*Важно! Что такое Chat Id и как его получить?*\nChat Id - это уникальный идентификатор, который используется в ботах для отправки сообщений пользователям (надеюсь объяснил понятно).\nДля того чтобы получить Chat Id вашего друга нужно найти сообщение друга и отправить его боту @userinfobot и скопировать набор цифр из *ВТОРОЙ СТРОКИ* и отправить его в ответ на это сообщение!\n_P.S. кнопка /stop это для того чтобы отменить выбор!_", parse_mode="Markdown", reply_markup=markup)
+            bot.send_message(igrok2, "Окей! Ждем приглашения третьего игрока!")
+            bot.register_next_step_handler(send, kmn_peredacha)
+        elif message.text == "Нет!":
+            bot.send_message(igrok1, f"Пользователь {user2} отклонил приглашение!", reply_markup=markup2)
+            bot.send_message(igrok2, "Вы отклонили приглашение!", reply_markup=markup2)
+    elif not message.text.title() in vib:
+        send = bot.send_message(igrok2, "Вы кажется не то ввели. Нажмите кнопку ниже!")
+        bot.register_next_step_handler(send, kmn_mp_3)
+
+def kmn_peredacha(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("Передать возможность первому игроку")
+    markup1.add(but)
+    markup2 = types.ReplyKeyboardRemove()
+    if message.text.isdigit():
+        global igrok3
+        igrok3 = str(message.text)
+        bot.send_message(igrok1, "Приняли! Ожидайте ответа!", reply_markup=markup2)
+        bot.send_message(igrok2, "Подождите еще! Отправили приглашение третьему другу!", reply_markup=markup2)
+        send = bot.send_message(igrok3, f"{user1} и {user2} отправили вам приглашение сыграть вместе в игру Камень-ножницы-бумага! Вы согласны?", reply_markup=markup)
+        bot.register_next_step_handler(send, kmn_vib_ig1_3)
+    elif not message.text.isdigit() and message.text == "Передать возможность второму игроку":
+        p = open("Важное фото.png", "rb")
+        bot.send_message(igrok1, f"Окей! Отправили возможность приглашения игроку {user2}", parse_mode="Markdown", reply_markup=markup2)
+        send = bot.send_photo(igrok2, photo=p, caption=f"Игрок {user1} передал вам возможность выбора друга! Введите Chat Id вашего друга!\n{text_photo}", reply_markup=markup1, parse_mode="Markdown")
+        bot.register_next_step_handler(send, kmn_mp_3_1)
+    elif not message.text.isdigit() and message.text != "Передать возможность второму игроку":
+        send = bot.send_message(igrok1, "Ой, мы кажется вас не поняли! Введите Chat Id или передайте возможность выбора второму другу")
+        bot.register_next_step_handler(send, kmn_peredacha)
+
+def kmn_mp_3_1(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("Передать возможность второму игроку")
+    markup1.add(but)
+    markup2 = types.ReplyKeyboardRemove()
+    if message.text.isdigit():
+        global igrok3
+        igrok3 = str(message.text)
+        bot.send_message(igrok2, "Приняли! Ожидайте ответа!", reply_markup=markup2)
+        bot.send_message(igrok1, f"Подождите еще! {user2} уже кого-то пригласил и ждет ответа!", reply_markup=markup2)
+        send = bot.send_message(igrok3, f"{user1} и {user2} отправили вам приглашение сыграть вместе в игру Камень-ножницы-бумага! Вы согласны?", reply_markup=markup)
+        bot.register_next_step_handler(send, kmn_vib_ig1_3)
+    elif not message.text.isdigit() and message.text == "Передать возможность первому игроку":
+        p = open("Важное фото.png", "rb")
+        bot.send_message(igrok2, f"Окей! Вернули возможность приглашения игроку {user1}", reply_markup=markup2)
+        send = bot.send_photo(igrok1, photo=p, caption=f"Игрок {user2} отказался от возможности выбора друга! Введите Chat Id вашего друга!\n{text_photo}", reply_markup=markup1, parse_mode="Markdown")
+        bot.register_next_step_handler(send, kmn_peredacha)
+    elif not message.text.isdigit() and message.text != "Передать возможность второму игроку":
+        send = bot.send_message(igrok2, "Ой, мы кажется вас не поняли! Введите Chat Id или передайте возможность выбора второму другу")
+        bot.register_next_step_handler(send, kmn_mp_3)
+
+def kmn_vib_ig1_3(message):
+    global sh_ig1_3, sh_ig2_3, sh_ig3_3
+    sh_ig1_3 = int(0)
+    sh_ig2_3 = int(0)
+    sh_ig3_3 = int(0)
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kamen)
+    but2 = types.KeyboardButton(noshik)
+    but3 = types.KeyboardButton(bumaga)
+    but4 = types.KeyboardButton(stop)
+    markup.add(but1, but2, but3).add(but4)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = types.KeyboardButton("Отменить игру")
+    but6 = types.KeyboardButton("Пригласить другого пользователя")
+    but7 = types.KeyboardButton("Играть в двоем")
+    markup1.add(but5, but6, but7)
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but8 = types.KeyboardButton("/start")
+    markup2.add(but8)
+    markup3 = types.ReplyKeyboardRemove()
+    global user3
+    user3 = str(message.from_user.first_name)
+    if message.text.title() in vib:
+        if message.text == "Да!":
+            send = bot.send_message(igrok1, f"Ура! {user3} принял приглашение! Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+            bot.send_message(igrok2, f"Ура! {user3} принял приглашения! Подожди выбор {user1}", reply_markup=markup3)
+            bot.send_message(igrok3, f"Вы приняли приглашение! Подожди выбор {user1}", reply_markup=markup3)
+            bot.register_next_step_handler(send, kmn_vib_ig2_3)
+        elif message.text == "Нет!":
+            send = bot.send_message(igrok1, f"{user3} отклонил приглашение! Выберите одно из действий ниже!", reply_markup=markup1)
+            bot.send_message(igrok2, f"{user3} отклонил приглашение! Ждем решение первого игрока!", reply_markup=markup3)
+            bot.send_message(igrok3, "Вы отклонили приглашение!", reply_markup=markup2)
+            bot.register_next_step_handler(send, kmn_konflikt)
+    elif not message.text.title() in vib:
+        send = bot.send_message(igrok3, "Я вас не понял! Нажми кнопку ниже!")
+        bot.register_next_step_handler(send, kmn_vib_ig1_3)
+
+def kmn_vib_ig2_3(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kamen)
+    but2 = types.KeyboardButton(noshik)
+    but3 = types.KeyboardButton(bumaga)
+    but4 = types.KeyboardButton(stop)
+    markup.add(but1, but2, but3).add(but4)
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but8 = types.KeyboardButton("/start")
+    markup2.add(but8)
+    markup3 = types.ReplyKeyboardRemove()
+    if message.text in bot_knb1:
+        if message.text in bot_knb:
+            global zn_ig1
+            zn_ig1 = message.text
+            bot.send_message(igrok1, f"Окей, принял! Жду решения {user2}.", reply_markup=markup3)
+            send = bot.send_message(igrok2, f"{user1} выбрал! Настал ваш выбор: выберите камень, ножницы или бумагу!", reply_markup=markup)
+            bot.send_message(igrok3, f"{user1} сделал выбор! Ждем выбора второго игрока!", reply_markup=markup3)
+            bot.register_next_step_handler(send, kmn_vib_ig3_3)
+        elif message.text == "/stop":
+            bot.send_message(igrok1, f"Вы завершили игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok2, f"{user1} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok3, f"{user1} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+    elif not message.text in bot_knb1:
+        send = bot.send_message(igrok1, "Ой, не совсем тебя поняли! Нажми любую кнопку ниже!")
+        bot.register_next_step_handler(send, kmn_vib_ig2_3)
+
+def kmn_vib_ig3_3(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kamen)
+    but2 = types.KeyboardButton(noshik)
+    but3 = types.KeyboardButton(bumaga)
+    but4 = types.KeyboardButton(stop)
+    markup.add(but1, but2, but3).add(but4)
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = types.KeyboardButton("/start")
+    markup2.add(but5)
+    markup3 = types.ReplyKeyboardRemove()
+    if message.text in bot_knb1:
+        if message.text in bot_knb:
+            global zn_ig2
+            zn_ig2 = message.text
+            bot.send_message(igrok1, f"{user2} сделал выбор! Ждем выбор {user3}!", reply_markup=markup3)
+            bot.send_message(igrok2, f"Окей, принял! Жду решения {user3}.", reply_markup=markup3)
+            send = bot.send_message(igrok3, f"{user2} выбрал! Настал ваш выбор: выберите камень, ножницы или бумагу!", reply_markup=markup)
+            bot.register_next_step_handler(send, kmn_vib_itog_3)
+        elif message.text == "/stop":
+            bot.send_message(igrok2, f"Вы завершили игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok1, f"{user2} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok3, f"{user2} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+    elif not message.text in bot_knb1:
+        send = bot.send_message(igrok2, "Ой, не совсем тебя поняли! Нажми любую кнопку ниже!")
+        bot.register_next_step_handler(send, kmn_vib_ig3_3)
+
+def kmn_vib_itog_3(message):
+    global sh_ig1_3, sh_ig2_3, sh_ig3_3
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kamen)
+    but2 = types.KeyboardButton(noshik)
+    but3 = types.KeyboardButton(bumaga)
+    but4 = types.KeyboardButton(stop)
+    markup.add(but1, but2, but3).add(but4)
+    markup1 = types.ReplyKeyboardRemove()
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = types.KeyboardButton("/start")
+    markup2.add(but5)
+
+    if message.text in bot_knb1:
+        if message.text in bot_knb:
+            global zn_ig3
+            zn_ig3 = message.text
+            bot.send_message(igrok1, f"Ты выбрал: *{zn_ig1}*\n{user2} выбрал: *{zn_ig2}*\n{user3} выбрал: *{zn_ig3}*", parse_mode="Markdown")
+            bot.send_message(igrok2, f"Ты выбрал: *{zn_ig2}*\n{user1} выбрал: *{zn_ig1}*\n{user3} выбрал: *{zn_ig3}*", parse_mode="Markdown")
+            bot.send_message(igrok3, f"Ты выбрал: *{zn_ig3}*\n{user1} выбрал: *{zn_ig1}*\n{user2} выбрал: *{zn_ig2}*", parse_mode="Markdown")
+            if zn_ig1 == zn_ig2 and zn_ig2 == zn_ig3:
+                sh_ig1_3 += 1
+                sh_ig2_3 += 1
+                sh_ig3_3 += 1
+                bot.send_message(igrok1, f"Ничья!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"Ничья!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"Ничья!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+                bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.register_next_step_handler(send, kmn_vib_ig2_3)
+            elif (zn_ig1 == kamen and zn_ig2 == noshik and zn_ig2 == zn_ig3) or (zn_ig1 == noshik and zn_ig2 == bumaga and zn_ig2 == zn_ig3) or (zn_ig1 == bumaga and zn_ig2 == kamen and zn_ig2 == zn_ig3):
+                sh_ig1_3 += 1
+                bot.send_message(igrok1, f"Ты победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"{user1} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"{user1} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+                bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.register_next_step_handler(send, kmn_vib_ig2_3)
+            elif (zn_ig2 == kamen and zn_ig1 == noshik and zn_ig1 == zn_ig3) or (zn_ig2 == noshik and zn_ig1 == bumaga and zn_ig1 == zn_ig3) or (zn_ig2 == bumaga and zn_ig1 == kamen and zn_ig1 == zn_ig3):
+                sh_ig2_3 += 1
+                bot.send_message(igrok2, f"Ты победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"{user2} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"{user2} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+                bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.register_next_step_handler(send, kmn_vib_ig2_3)
+            elif (zn_ig3 == kamen and zn_ig1 == noshik and zn_ig1 == zn_ig2) or (zn_ig3 == noshik and zn_ig1 == bumaga and zn_ig1 == zn_ig2) or (zn_ig3 == bumaga and zn_ig1 == kamen and zn_ig1 == zn_ig2):
+                sh_ig3_3 += 1
+                bot.send_message(igrok3, f"Ты победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"{user3} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"{user3} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+                bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.register_next_step_handler(send, kmn_vib_ig2_3)
+            elif (zn_ig2 == kamen and zn_ig1 == bumaga and zn_ig1 == zn_ig3) or (zn_ig2 == bumaga and zn_ig1 == noshik and zn_ig1 == zn_ig3) or (zn_ig2 == noshik and zn_ig1 == kamen and zn_ig1 == zn_ig3):
+                sh_ig1_3 += 1
+                sh_ig3_3 += 1
+                bot.send_message(igrok3, f"Ты и {user1} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"Ты и {user3} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"{user1} и {user3} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+                bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.register_next_step_handler(send, kmn_vib_ig2_3)
+            elif (zn_ig1 == kamen and zn_ig2 == bumaga and zn_ig2 == zn_ig3) or (zn_ig1 == bumaga and zn_ig2 == noshik and zn_ig2 == zn_ig3) or (zn_ig1 == noshik and zn_ig2 == kamen and zn_ig2 == zn_ig3):
+                sh_ig2_3 += 1
+                sh_ig3_3 += 1
+                bot.send_message(igrok2, f"Ты и {user1} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"Ты и {user2} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"{user1} и {user2} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+                bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.register_next_step_handler(send, kmn_vib_ig2_3)
+            elif (zn_ig3 == kamen and zn_ig2 == bumaga and zn_ig2 == zn_ig1) or (zn_ig3 == bumaga and zn_ig2 == noshik and zn_ig2 == zn_ig1) or (zn_ig3 == noshik and zn_ig2 == kamen and zn_ig2 == zn_ig1):
+                sh_ig2_3 += 1
+                sh_ig1_3 += 1
+                bot.send_message(igrok2, f"Ты и {user1} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"Ты и {user2} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"{user1} и {user2} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+                bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.register_next_step_handler(send, kmn_vib_ig2_3)
+            elif (zn_ig1 == kamen and zn_ig2 == bumaga and zn_ig3 == noshik) or (zn_ig1 == kamen and zn_ig2 == noshik and zn_ig3 == bumaga) or (zn_ig1 == noshik and zn_ig2 == kamen and zn_ig3 == bumaga) or (zn_ig1 == noshik and zn_ig2 == bumaga and zn_ig3 == kamen) or (zn_ig1 == bumaga and zn_ig2 == kamen and zn_ig3 == noshik) or (zn_ig1 == bumaga and zn_ig2 == noshik and zn_ig3 == kamen):
+                bot.send_message(igrok1, f"Разный выбор!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"Разный выбор!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"Разный выбор!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
+                bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
+                bot.register_next_step_handler(send, kmn_vib_ig2_3)
+        elif message.text == "/stop":
+            bot.send_message(igrok3, f"Вы завершили игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok1, f"{user3} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok2, f"{user3} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+    elif not message.text in bot_knb1:
+        send = bot.send_message(igrok3, "Ой, не совсем тебя поняли! Нажми любую кнопку ниже!")
+        bot.register_next_step_handler(send, kmn_vib_itog_3)
+
+def kmn_konflikt(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/start")
+    markup.add(but)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = types.KeyboardButton("Передать возможность второму игроку")
+    markup1.add(but5)
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kamen)
+    but2 = types.KeyboardButton(noshik)
+    but3 = types.KeyboardButton(bumaga)
+    but4 = types.KeyboardButton(stop)
+    markup2.add(but1, but2, but3).add(but4)
+    if message.text in vib1:
+        if message.text == "Отменить игру":
+            bot.send_message(igrok1, "Я вас понял! Спасибо за использование игры!", reply_markup=markup)
+            bot.send_message(igrok2, f"{user1} принял решение завершить игру! Спасибо за использование игры!", reply_markup=markup)
+        elif message.text == "Пригласить другого пользователя":
+            send = bot.send_message(igrok1, f"Введите Chat Id вашего друга или передайте эту возможность {user2}!", reply_markup=markup1)
+            bot.send_message(igrok1, f"{user1} принял решение пригласить другого игрока! Подождите пока он кого-то пригласит!")
+            bot.register_next_step_handler(send, kmn_peredacha)
+        elif message.text == "Играть в двоем":
+            global sh_ig1, sh_ig2
+            sh_ig1 = int(0)
+            sh_ig2 = int(0)
+            send = bot.send_message(igrok1, "Окей! Выберите Камень. ножницы или бумагу!", reply_markup=markup2)
+            bot.send_message(igrok2, f"{user1} принял решение сыграть только с вами! Подождите его выбор!")
+            bot.register_next_step_handler(send, kmn_mp_vib_ig2)
+    elif not message.text in vib1:
+        send = bot.send_message(igrok1, "Ой, не совсем тебя поняли! Нажми любую кнопку ниже!")
+        bot.register_next_step_handler(send, kmn_konflikt)
+
+@bot.message_handler(commands=["beta_randomaizer"])
+def randomaizer_vib(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton(kmn_reshim[0])
+    but2 = types.KeyboardButton(kmn_reshim[1])
+    markup.add(but1, but2)
+    global user1, polsovatel1
+    user1 = message.from_user.first_name
+    polsovatel1 = str(message.chat.id)
+    send = bot.send_message(polsovatel1, "Привет, ты в Рандомайзере! Выбери режим работы!", reply_markup=markup)
+    bot.register_next_step_handler(send, randomaizer)
+
+def randomaizer(message):
+    global spis
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/stop")
+    markup.add(but)
+    if message.text in kmn_reshim:
+        if message.text == "Одиночный":
+            spis = open(f"{message.chat.id}.txt", "w+")
+            print(message.chat.id)
+            send = bot.send_message(message.chat.id, "Введите предметы, а когда вы все напишите нажмите кнопку ниже!", reply_markup=markup)
+            bot.register_next_step_handler(send, randomaizer1)
+        elif message.text == "Сетевой":
+            send = bot.send_message(polsovatel1, "Введите Chat Id вашего друга!", reply_markup=markup)
+            bot.register_next_step_handler(send, randomaizer_mp)
+
+def randomaizer1(message):
+    global spis
+    spis = open(f"{message.chat.id}.txt", "a", encoding="UTF-8")
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup1.add(but1, but2)
+    if message.content_type == "text" and message.text != "/stop":
+        spis.write(str(message.text) + "\n")
+        send = bot.send_message(message.chat.id, "Отлично! Можно ввести еще!")
+        bot.register_next_step_handler(send, randomaizer1)
+    elif message.text == "/stop":
+        spis = open(f"{message.chat.id}.txt", "r", encoding="UTF-8")
+        spis_read = spis.read()
+        send = bot.send_message(message.chat.id, f"Окей! Проверь все ли верно:\n*{spis_read}*", reply_markup=markup1, parse_mode="Markdown")
+        bot.register_next_step_handler(send, randomaizer_vp)
+
+def randomaizer_vp(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("Крутить")
+    markup.add(but)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("/stop")
+    markup1.add(but1)
+    if message.text in slova:
+        if message.text == "Да!":
+            send = bot.send_message(message.chat.id, "Хорошо! Тогда нажми кнопку ниже!", reply_markup=markup)
+            bot.register_next_step_handler(send, randomaizer2)
+        elif message.text == "Нет!":
+            spis.close()
+            os.remove(f"{message.chat.id}.txt")
+            send = bot.send_message(message.chat.id, "Введи другие значения!", reply_markup=markup1)
+            bot.register_next_step_handler(send, randomaizer1)
+    elif not message.text in slova:
+        send = bot.send_message(message.chat.id, "Ой!")
+        bot.register_next_step_handler(send, randomaizer_vp)
+
+def randomaizer2(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Крутить")
+    but2 = types.KeyboardButton("Удалить")
+    but3 = types.KeyboardButton("Завершить")
+    markup.add(but1, but2).add(but3)
+    global random_itog, words
+    if message.text == "Крутить":
+        spis = open(f"{message.chat.id}.txt", "r", encoding="UTF-8")
+        allText = spis.read()
+        words = list(map(str, allText.split()))
+        shifron = []
+        while True:
+            kluchi = choice(kluchi_shifron)
+            shifron.append(kluchi)
+            if len(shifron) == len(words):
+                kluchi_bez_skobok = ", ".join(shifron)
+                print(f"Получен новый список от {message.chat.id}: {kluchi_bez_skobok}")
+                break
+        random_itog = choice(words)
+        send = bot.send_message(message.chat.id, f"Итог: *{random_itog}*\n\nВыберите действие с этим списком ниже!", parse_mode="Markdown", reply_markup=markup)
+        bot.register_next_step_handler(send, randomaizer3)
+        shifron.clear()
+    elif message.text != "Крутить":
+        send = bot.send_message(message.chat.id, "Ой")
+        bot.register_next_step_handler(send, randomaizer2)
+
+def randomaizer3(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Крутить")
+    but2 = types.KeyboardButton("Удалить")
+    but3 = types.KeyboardButton("Завершить")
+    markup.add(but1, but2).add(but3)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    markup1.add(but1, but3)
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/start")
+    markup2.add(but)
+    global random_itog, words
+    if message.text in slo1:
+        if message.text == "Удалить":
+            words.remove(random_itog)
+            if len(words) != 0:
+                send = bot.send_message(message.chat.id, "Элемент удален! Нажмите кнопку ниже!", reply_markup=markup1)
+                bot.register_next_step_handler(send, randomaizer3)
+            elif len(words) == 0:
+                spis.close()
+                os.remove(f"{message.chat.id}.txt")
+                bot.send_message(message.chat.id, "Элемент удален! На этом список закончился! Спасибо за использование!", reply_markup=markup2)
+        elif message.text == "Крутить":
+            random_itog = choice(words)
+            send = bot.send_message(message.chat.id, f"Итог: *{random_itog}*\n\nВыберите действие с этим списком ниже!", parse_mode="Markdown", reply_markup=markup)
+            bot.register_next_step_handler(send, randomaizer3)
+        elif message.text == "Завершить":
+            bot.send_message(message.chat.id, "Окей, завершаем использование! Спасибо за использование!", reply_markup=markup2)
+            spis.close()
+            os.remove(f"{message.chat.id}.txt")
+    elif not message.text in slo1:
+        send = bot.send_message(message.chat.id, "Ой")
+        bot.register_next_step_handler(send, randomaizer3)
+
+def randomaizer_mp(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardRemove()
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/stop")
+    markup2.add(but)
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but3 = types.KeyboardButton("/start")
+    markup3.add(but3)
+    if message.text.isdigit():
+        global polsovatel2
+        polsovatel2 = str(message.text)
+        bot.send_message(polsovatel1, "Отправили твое приглашение! Ожидай ответа!", reply_markup=markup1)
+        send = bot.send_message(polsovatel2, f"Вам пришло приглашение от пользователя {user1}! Вы принимаете его приглашение?", reply_markup=markup)
+        bot.register_next_step_handler(send, randomaizer_mp_vibor_elem)
+    elif not message.text.isdigit() and message.text != "/stop":
+        send = bot.send_message(polsovatel1, "Вводите только цифры!", reply_markup=markup2)
+        bot.register_next_step_handler(send, randomaizer_mp)
+    elif not message.text.isdigit() and message.text == "/stop":
+        bot.send_message(polsovatel1, "Принял! Нажми на одну из кнопок ниже!", reply_markup=markup3)
+
+def randomaizer_mp_vibor_elem(message):
+    global user2
+    user2 = message.from_user.first_name
+    if message.text.title() in slova:
+        if message.text.title() == "Да!":
+            spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "w+", encoding="UTF-8")
+            send = bot.send_message(polsovatel1, f"{user2} принял приглашение! Начните вводить нужные вам или вашему другу значения!")
+            bot.send_message(polsovatel2, f"Вы приняли приглашение! Подожди пока {user1} выберет нужные значения!")
+            bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_1)
+        elif message.text.title() == "Нет!":
+            bot.send_message(polsovatel1, f"{user2} отклонил приглашение!")
+            bot.send_message(polsovatel2, "Вы отклонили приглашение!")
+    elif not message.text.title() in slova:
+        send = bot.send_message(polsovatel2, "Ой")
+        bot.register_next_step_handler(send, randomaizer_mp_vibor_elem)
+
+def randomaizer_mp_vibor_elem_1(message):
+    global spis_mp
+    spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "a", encoding="UTF-8")
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/stop")
+    markup1.add(but)
+    markup2 = types.ReplyKeyboardRemove()
+    if message.content_type == "text" and not message.text in slova2:
+        spis_mp.write(str(message.text) + "\n")
+        send = bot.send_message(polsovatel1, "Добавил! Добавь еще!")
+        bot.send_message(polsovatel2, "Один элемент добавлен! Добавляются еще!", reply_markup=markup2)
+        bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_1)
+    elif message.text in slova2:
+        if message.text == "Передать возможность добавить второму игроку нужное значение":
+            bot.send_message(polsovatel1, f"Окей! Отправил {user2} такую возможность!", reply_markup=markup2)
+            send = bot.send_message(polsovatel2, f"{user1} предоставил вам возможность добавить элементы в список! Введите в строку ниже нужные элементы!", reply_markup=markup1)
+            bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_2)
+        elif message.text == slova2[2]:
+            spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "r", encoding="UTF-8")
+            result = spis_mp.read()
+            send = bot.send_message(polsovatel1, f"Ваш с {user2} список выглядит вот так:\n*{result}*\n\nВы соглачны использовать такой список?", reply_markup=markup, parse_mode="Markdown")
+            bot.register_next_step_handler(send, randomaizer_mp_vibor1)
+
+def randomaizer_mp_vibor_elem_2(message):
+    global spis_mp
+    spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "a", encoding="UTF-8")
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/stop")
+    markup1.add(but)
+    markup2 = types.ReplyKeyboardRemove()
+    if message.content_type == "text" and not message.text in slova2:
+        spis_mp.write(str(message.text) + "\n")
+        send = bot.send_message(polsovatel2, "Добавил! Добавь еще!", reply_markup=markup1)
+        bot.send_message(polsovatel1, "Один элемент добавлен! Добавляются еще!", reply_markup=markup2)
+        bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_2)
+    elif message.text in slova2:
+        if message.text == "Передать возможность добавить первому игроку нужное значение":
+            bot.send_message(polsovatel2, f"Окей! Отправил {user1} такую возможность!", reply_markup=markup2)
+            send = bot.send_message(polsovatel1, f"{user2} предоставил вам возможность добавить элементы в список! Введите в строку ниже нужные элементы!", reply_markup=markup1)
+            bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_1)
+        elif message.text == slova2[2]:
+            spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "r", encoding="UTF-8")
+            result = spis_mp.read()
+            send = bot.send_message(polsovatel2, f"Ваш с {user1} список выглядит вот так:\n*{result}*\n\nВы согласны использовать такой список?", reply_markup=markup, parse_mode="Markdown")
+            bot.register_next_step_handler(send, randomaizer_mp_vibor1_2)
+
+def randomaizer_mp_vibor1(message):
+    spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "r", encoding="UTF-8")
+    result = spis_mp.read()
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/stop")
+    markup1.add(but)
+    markup2 = types.ReplyKeyboardRemove()
+    if message.text in slova:
+        if message.text == "Да!":
+            bot.send_message(polsovatel1, f"Окей! Отправил вопрос {user2}. Ожидайте ответа!", reply_markup=markup2)
+            send = bot.send_message(polsovatel2, f"Ваш с {user1} список выглядит вот так:\n{result}\n\nВы согласны использовать такой список?", reply_markup=markup)
+            bot.register_next_step_handler(send, randomaizer_mp_vibor2)
+        if message.text == "Нет!":
+            send = bot.send_message(polsovatel1, "Введите другие значения в список!", reply_markup=markup1)
+            bot.send_message(polsovatel2, f"{user1} сбросил список и сейчас заполняет его заного! Подождите немного!", reply_markup=markup2)
+            bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_1)
+    elif not message.text in slova:
+        send = bot.send_message(polsovatel1, "Ой!")
+        bot.register_next_step_handler(send, randomaizer_mp_vibor1)
+
+def randomaizer_mp_vibor1_2(message):
+    spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "r", encoding="UTF-8")
+    result = spis_mp.read()
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Да!")
+    but2 = types.KeyboardButton("Нет!")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/stop")
+    markup1.add(but)
+    markup2 = types.ReplyKeyboardRemove()
+    if message.text in slova:
+        if message.text == "Да!":
+            bot.send_message(polsovatel2, f"Окей! Отправил вопрос {user1}. Ожидайте ответа!", reply_markup=markup2)
+            send = bot.send_message(polsovatel1, f"Ваш с {user2} список выглядит вот так:\n{result}\n\nВы согласны использовать такой список?", reply_markup=markup)
+            bot.register_next_step_handler(send, randomaizer_mp_vibor2_2)
+        if message.text == "Нет!":
+            send = bot.send_message(polsovatel2, "Введите другие значения в список!", reply_markup=markup1)
+            bot.send_message(polsovatel1, f"{user2} сбросил список и сейчас заполняет его заного! Подождите немного!")
+            bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_1)
+    elif not message.text in slova:
+        send = bot.send_message(polsovatel1, "Ой!")
+        bot.register_next_step_handler(send, randomaizer_mp_vibor1_2)
+
+def randomaizer_mp_vibor2(message):
+    global words_mp
+    spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "r", encoding="UTF-8")
+    allText = spis_mp.read()
+    words_mp = list(map(str, allText.split()))
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Крутить")
+    but2 = types.KeyboardButton("Завершить")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardRemove()
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/stop")
+    markup2.add(but)
+    if message.text in slova:
+        if message.text == "Да!":
+            shifron_mp = []
+            while True:
+                kluchi = choice(kluchi_shifron)
+                shifron_mp.append(kluchi)
+                if len(shifron_mp) == len(words_mp):
+                    kluchi_bez_skobok = ", ".join(shifron_mp)
+                    print(f"Получен новый список от {message.chat.id}: {kluchi_bez_skobok}")
+                    break
+            send = bot.send_message(polsovatel1, f"Окей, принял! Нажми кнопку ниже!", reply_markup=markup)
+            bot.send_message(polsovatel2, f"Приняли! Ждем выбора {user1}", reply_markup=markup1)
+            bot.register_next_step_handler(send, randomaizer_mp_random)
+            shifron_mp.clear()
+        if message.text == "Нет!":
+            send = bot.send_message(polsovatel2, "Введите другие значения в список!", reply_markup=markup2)
+            bot.send_message(polsovatel1, f"{user2} сбросил список и сейчас заполняет его заного! Подождите немного!", reply_markup=markup1)
+            bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_2)
+    elif not message.text in slova:
+        send = bot.send_message(polsovatel1, "Ой!")
+        bot.register_next_step_handler(send, randomaizer_mp_vibor2)
+
+def randomaizer_mp_vibor2_2(message):
+    global words_mp
+    spis_mp = open(f"{polsovatel1}and{polsovatel2}.txt", "r", encoding="UTF-8")
+    allText = spis_mp.read()
+    words_mp = list(map(str, allText.split()))
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Крутить")
+    but2 = types.KeyboardButton("Завершить")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardRemove()
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/stop")
+    markup2.add(but)
+    if message.text in slova:
+        if message.text == "Да!":
+            bot.send_message(polsovatel2, f"Окей! Ждем пользователя {user1}!", reply_markup=markup1)
+            send = bot.send_message(polsovatel1, f"{user2} принял список! Нажми кнопку ниже!", reply_markup=markup)
+            bot.register_next_step_handler(send, randomaizer_mp_random)
+        if message.text == "Нет!":
+            send = bot.send_message(polsovatel2, "Введите другие значения в список!", reply_markup=markup2)
+            bot.send_message(polsovatel1, f"{user2} сбросил список и сейчас заполняет его заного! Подождите немного!", reply_markup=markup1)
+            bot.register_next_step_handler(send, randomaizer_mp_vibor_elem_1)
+    elif not message.text in slova:
+        send = bot.send_message(polsovatel1, "Ой!")
+        bot.register_next_step_handler(send, randomaizer_mp_vibor2)
+
+def randomaizer_mp_random(message):
+    global random_itog_mp
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Крутить")
+    but2 = types.KeyboardButton("Удалить")
+    but3 = types.KeyboardButton("Завершить")
+    markup.add(but1, but2).add(but3)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/start")
+    markup1.add(but)
+    if message.text in slo1_1:
+        if message.text == "Крутить":
+            random_itog_mp = choice(words_mp)
+            send = bot.send_message(polsovatel1, f"Итог: *{random_itog_mp}*\n\nВыберите действие ниже!", parse_mode="Markdown", reply_markup=markup)
+            bot.send_message(polsovatel2, f"Итог: *{random_itog_mp}*\n\nПодождите действие {user1}!", parse_mode="Markdown")
+            bot.register_next_step_handler(send, randomaizer_mp_random_vib)
+        elif message.text == "Завершить":
+            bot.send_message(polsovatel1, "Окей! Завершаем использование сервисом! Спасибо за использование!", reply_markup=markup1)
+            bot.send_message(polsovatel2, f"{user1} принял решение завершить работу с рандомайзером! Спасибо за использование!", reply_markup=markup1)
+            spis_mp.close()
+            os.remove(f"{polsovatel1}and{polsovatel2}.txt")
+    elif not message.text in slo1_1:
+        send = bot.send_message(polsovatel1, "Ой")
+        bot.register_next_step_handler(send, randomaizer_mp_random)
+
+def randomaizer_mp_random_vib(message):
+    global random_itog_mp, words_mp
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but1 = types.KeyboardButton("Крутить")
+    but2 = types.KeyboardButton("Завершить")
+    markup.add(but1, but2)
+    markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/start")
+    markup1.add(but)
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but3 = types.KeyboardButton("Крутить")
+    but4 = types.KeyboardButton("Удалить")
+    but5 = types.KeyboardButton("Завершить")
+    markup2.add(but3, but4).add(but5)
+    if message.text in slo1:
+        if message.text == "Удалить":
+            words_mp.remove(random_itog_mp)
+            if len(words_mp) != 0:
+                send = bot.send_message(polsovatel1, "Данный элемент удален! Нажмите кнопку ниже!", reply_markup=markup)
+                bot.send_message(polsovatel2, f"{user1} удалил из списка *{random_itog_mp}*! Ждем его действие!", parse_mode="Markdown")
+                bot.register_next_step_handler(send, randomaizer_mp_random)
+            elif len(words_mp) == 0:
+                bot.send_message(polsovatel1, "Данный элемент удален, а список весь закончился! Спасибо за уделенное время!", reply_markup=markup1)
+                bot.send_message(polsovatel2, "Последний элемент в списке удален, и на сегодня работа закончена! Спасибо за уделенное время!", reply_markup=markup1)
+                spis_mp.close()
+                os.remove(f"{polsovatel1}and{polsovatel2}.txt")
+        elif message.text == "Крутить":
+            random_itog_mp = choice(words_mp)
+            send = bot.send_message(polsovatel1, f"Итог: *{random_itog_mp}*\n\nВыберите действие ниже!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(polsovatel2, f"Итог: *{random_itog_mp}*\n\nПодождите действие {user1}!", parse_mode="Markdown")
+            bot.register_next_step_handler(send, randomaizer_mp_random_vib)
+        elif message.text == "Завершить":
+            bot.send_message(polsovatel1, "Окей! Завершаем использование сервисом! Спасибо за использование!", reply_markup=markup1)
+            bot.send_message(polsovatel2, f"{user1} принял решение завершить работу с рандомайзером! Спасибо за использование!", reply_markup=markup1)
+            spis_mp.close()
+            os.remove(f"{polsovatel1}and{polsovatel2}.txt")
+    elif not message.text in slo1:
+        send = bot.send_message(polsovatel1, "Ой!")
+        bot.register_next_step_handler(send, randomaizer_mp_random_vib)
+
+@bot.message_handler(content_types=['text'])
+def ne(message):
+    markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but5 = "/start"
+    markup3.add(but5)
+    bot.send_message(message.chat.id, "Ой, не совсем тебя понял! Нажми кнопку ниже!", reply_markup=markup3)
+
+bot.polling(none_stop=True, interval=0)
