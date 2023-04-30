@@ -3,11 +3,11 @@ from telebot import types
 import random
 from random import choice
 import os
-token = '5887898731:AAEocHK3svKpI9wjz-ss4GbDHjZPoEy-Zds'
+token = 'Какой-то токен'
 bot = telebot.TeleBot(token)
 language = 'ru'
-chat = '5897642255'
-chat1 = '5312252852'
+chat = 'Чей то Чат Айди'
+chat1 = 'Чей то Чат Айди'
 kamen = "Камень"
 noshik = "Ножницы"
 bumaga = "Бумага"
