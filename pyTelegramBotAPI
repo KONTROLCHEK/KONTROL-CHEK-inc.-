@@ -329,8 +329,8 @@ def vibor(message):
     moi_chat = "[чат](https://t.me/kontrol_chek185chat)"
     groupvk = "[личные сообщения группы ВК](https://vk.me/kontrol.chek)"
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add(types.KeyboardButton("KONTROL CHEK"), types.KeyboardButton("IlyuhichPLAY"))
-    send = bot.send_message(message.chat.id, f"*ВАЖНО! Прочитай это сообщение перед тем как подать идею!*\n\nВ {text} я сказал, что с 24 апреля по 1 июля на моем канале перестанут выходить видео из-за подготовки к ОГЭ, а отдельно я сказал о том, что с 21 апреля прекращаю принимать идеи! Сейчас все идеи которые вы напишите сюда отправятся Илье IlyuhichPLAY! Пожалуйста, следите за обновлениями!\n\n_Что делать если я найду ошибку в работе бота?_\n\nНу во-первых необходимо сделать скриншот ошибки, а во-вторых отправить их в одно из следующих адресов:\n1)в мой {moi_chat}\n2)В {groupvk} (при условии что у вас есть страница в VK)", parse_mode="Markdown")
+    markup.add(types.KeyboardButton("/stop")
+    send = bot.send_message(message.chat.id, f"*ВАЖНО! Прочитай это сообщение перед тем как подать идею!*\n\nВ {text} я сказал, что с 24 апреля по 1 июля на моем канале перестанут выходить видео из-за подготовки к ОГЭ, а отдельно я сказал о том, что с 21 апреля прекращаю принимать идеи! Сейчас все идеи которые вы напишите сюда отправятся Илье IlyuhichPLAY! Пожалуйста, следите за обновлениями!\n\n_Что делать если я найду ошибку в работе бота?_\n\nНу во-первых необходимо сделать скриншот ошибки, а во-вторых отправить их в одно из следующих адресов:\n1)в мой {moi_chat}\n2)В {groupvk} (при условии что у вас есть страница в VK)", parse_mode="Markdown", reply_markup=markup)
     bot.register_next_step_handler(send, sanya)
 
 def i4(message):
