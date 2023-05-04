@@ -6,12 +6,13 @@ import os
 token = 'Какой-то токен'
 bot = telebot.TeleBot(token)
 language = 'ru'
-chat = 'Чей то Чат Айди'
-chat1 = 'Чей то Чат Айди'
+chat = 'Какой-то Чат Айди''
+chat1 = 'Какой-то Чат Айди'
 kamen = "Камень"
 noshik = "Ножницы"
 bumaga = "Бумага"
 stop = "/stop"
+kanal = "@kontrol_chek185"
 
 text_photo = "*Важно! Что такое Chat Id и как его получить?*\nChat Id - это уникальный идентификатор, который используется в ботах для отправки сообщений пользователям (надеюсь объяснил понятно).\nДля того чтобы получить Chat Id вашего друга нужно найти сообщение друга и отправить его боту @userinfobot и скопировать набор цифр из *ВТОРОЙ СТРОКИ* и отправить его в ответ на это сообщение!\n_P.S. кнопка /stop это для того чтобы отменить выбор!_"
 bot_knb_text = ""
@@ -92,6 +93,32 @@ chat_global = set()
 for line in chat_global_file:
     chat_global.add(line.strip())
 chat_global_file.close()
+
+@bot.message_handler(commands=["admin"])
+def adminka(message):
+	ne_chat_id = str(message.chat.id)
+	markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+	but = types.KeyboardButton(stop)
+	markup.add(but)
+	markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+	but1 = types.KeyboardButton("/start")
+	markup1.add(but1)
+	if ne_chat_id == chat:
+		send = bot.send_message(chat, "Введите сообщение для публикации в [Telegram-канал](https://t.me/kontrol_chek185)", parse_mode="Markdown", reply_markup=markup)
+		bot.register_next_step_handler(send, adminka1)
+	elif ne_chat_id != chat:
+		bot.send_message(ne_chat_id, "Извините, команда вам не доступна!", reply_markup=markup1)
+
+def adminka1(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    but = types.KeyboardButton("/start")
+    markup.add(but)
+    text = message.text
+    if message.content_type == "text" and message.text != stop:
+        bot.send_message(chat, "Сообщение успешно отправлено!", reply_markup=markup)
+        bot.send_message(kanal, text, parse_mode="Markdown")
+    elif message.text == stop:
+        bot.send_message(chat, "Вы отказались от публикаций в канал!", reply_markup=markup)
 
 @bot.message_handler(commands=['start'])
 def komand(message):
@@ -329,7 +356,7 @@ def vibor(message):
     moi_chat = "[чат](https://t.me/kontrol_chek185chat)"
     groupvk = "[личные сообщения группы ВК](https://vk.me/kontrol.chek)"
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add(types.KeyboardButton("/stop")
+    markup.add(types.KeyboardButton("/stop"))
     send = bot.send_message(message.chat.id, f"*ВАЖНО! Прочитай это сообщение перед тем как подать идею!*\n\nВ {text} я сказал, что с 24 апреля по 1 июля на моем канале перестанут выходить видео из-за подготовки к ОГЭ, а отдельно я сказал о том, что с 21 апреля прекращаю принимать идеи! Сейчас все идеи которые вы напишите сюда отправятся Илье IlyuhichPLAY! Пожалуйста, следите за обновлениями!\n\n_Что делать если я найду ошибку в работе бота?_\n\nНу во-первых необходимо сделать скриншот ошибки, а во-вторых отправить их в одно из следующих адресов:\n1)в мой {moi_chat}\n2)В {groupvk} (при условии что у вас есть страница в VK)", parse_mode="Markdown", reply_markup=markup)
     bot.register_next_step_handler(send, sanya)
 
@@ -584,8 +611,8 @@ def kmn_mp_itog(message):
         if message.text in bot_knb:
             global zn_ig2
             zn_ig2 = message.text
-            bot.send_message(chat_id=igrok1, text=f"Ты выбрал: {zn_ig1}\nДруг выбрал: {zn_ig2}")
-            bot.send_message(chat_id=igrok2, text=f"Ты выбрал: {zn_ig2}\nДруг выбрал: {zn_ig1}")
+            bot.send_message(chat_id=igrok1, text=f"Ты выбрал: *{zn_ig1}*\nДруг выбрал: *{zn_ig2}*", parse_mode="Markdown")
+            bot.send_message(chat_id=igrok2, text=f"Ты выбрал: *{zn_ig2}*\nДруг выбрал: *{zn_ig1}*", parse_mode="Markdown")
             if zn_ig1 == zn_ig2:
                 sh_ig1 += 1
                 sh_ig2 += 1
@@ -1063,12 +1090,17 @@ def randomaizer_mp(message):
     markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but3 = types.KeyboardButton("/start")
     markup3.add(but3)
+    text = "[здесь](https://t.me/kontrol_chek185/1131)"
     if message.text.isdigit():
         global polsovatel2
         polsovatel2 = str(message.text)
-        bot.send_message(polsovatel1, "Отправили твое приглашение! Ожидай ответа!", reply_markup=markup1)
-        send = bot.send_message(polsovatel2, f"Вам пришло приглашение от пользователя {user1}! Вы принимаете его приглашение?", reply_markup=markup)
-        bot.register_next_step_handler(send, randomaizer_mp_vibor_elem)
+        if polsovatel2 != polsovatel1:
+            bot.send_message(polsovatel1, "Отправили твое приглашение! Ожидай ответа!", reply_markup=markup1)
+            send = bot.send_message(polsovatel2, f"Вам пришло приглашение от пользователя {user1}! Вы принимаете его приглашение?", reply_markup=markup)
+            bot.register_next_step_handler(send, randomaizer_mp_vibor_elem)
+        elif polsovatel2 == polsovatel1:
+            send = bot.send_message(polsovatel1, f"Извините самого себя пригласить нельзя\! Введите другой Chat Id, либо нажмите /stop\!\n\n||О том что делать в этой ситуации читайте {text}||", parse_mode="MarkdownV2", reply_markup=markup2)
+            bot.register_next_step_handler(send, randomaizer_mp)
     elif not message.text.isdigit() and message.text != "/stop":
         send = bot.send_message(polsovatel1, "Вводите только цифры!", reply_markup=markup2)
         bot.register_next_step_handler(send, randomaizer_mp)
