@@ -3,16 +3,18 @@ from telebot import types
 import random
 from random import choice
 import os
-token = 'Какой-то токен'
+token = '5887898731:AAEocHK3svKpI9wjz-ss4GbDHjZPoEy-Zds'
 bot = telebot.TeleBot(token)
 language = 'ru'
-chat = 'Какой-то Чат Айди''
-chat1 = 'Какой-то Чат Айди'
+chat = '5897642255'
+chat1 = '5312252852'
 kamen = "Камень"
 noshik = "Ножницы"
 bumaga = "Бумага"
 stop = "/stop"
 kanal = "@kontrol_chek185"
+
+shet = {}
 
 text_photo = "*Важно! Что такое Chat Id и как его получить?*\nChat Id - это уникальный идентификатор, который используется в ботах для отправки сообщений пользователям (надеюсь объяснил понятно).\nДля того чтобы получить Chat Id вашего друга нужно найти сообщение друга и отправить его боту @userinfobot и скопировать набор цифр из *ВТОРОЙ СТРОКИ* и отправить его в ответ на это сообщение!\n_P.S. кнопка /stop это для того чтобы отменить выбор!_"
 bot_knb_text = ""
@@ -996,7 +998,6 @@ def randomaizer1(message):
         spis_read = spis.read()
         send = bot.send_message(message.chat.id, f"Окей! Проверь все ли верно:\n*{spis_read}*", reply_markup=markup1, parse_mode="Markdown")
         bot.register_next_step_handler(send, randomaizer_vp)
-
 def randomaizer_vp(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but = types.KeyboardButton("Крутить")
