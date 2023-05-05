@@ -3,7 +3,7 @@ from telebot import types
 import random
 from random import choice
 import os
-token = '5887898731:AAEucyY5oA63_Tqc-lyelbusm-HGk7ZcZbw'
+token = 'Токен сброшен)'
 bot = telebot.TeleBot(token)
 language = 'ru'
 chat = '5897642255'
