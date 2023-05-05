@@ -3,11 +3,11 @@ from telebot import types
 import random
 from random import choice
 import os
-token = ''
+token = '5887898731:AAEucyY5oA63_Tqc-lyelbusm-HGk7ZcZbw'
 bot = telebot.TeleBot(token)
 language = 'ru'
-chat = ''
-chat1 = ''
+chat = '5897642255'
+chat1 = '5312252852'
 kamen = "Камень"
 noshik = "Ножницы"
 bumaga = "Бумага"
@@ -455,9 +455,8 @@ def kmn_vib(message):
     markup2= types.ReplyKeyboardRemove()
     if message.text in kmn_reshim:
         if message.text == "Одиночный":
-            global user_count, bot_count
-            user_count = 0
-            bot_count = 0
+            shet[f"{message.chat.id}kmnna1_ig"] = int(0)
+            shet[f"{message.chat.id}kmnna1_bot"] = int(0)
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
             but5 = types.KeyboardButton(kamen)
             but6 = types.KeyboardButton(noshik)
@@ -492,31 +491,33 @@ def kmn_odin(message):
     markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but5 = "/start"
     markup3.add(but5)
-    global bot_knb_text, bot_knb, bot_knb1
     bot_knb_text = random.choice(["Камень", "Ножницы", "Бумага"])
     if message.text in bot_knb1:
         if message.text in bot_knb:
-            global user_count, bot_count
             user_message = message.text
             bot.send_message(message.chat.id, "Бот выбрал " + bot_knb_text)
             if user_message == bot_knb_text:
-                user_count += 1
-                bot_count += 1
-                send = bot.send_message(message.chat.id, f"Ничья!\nСчет:\nВы *{str(user_count)}*:*{str(bot_count)}* Бот", parse_mode="Markdown")
+                shet[f"{message.chat.id}kmnna1_ig"] += int(1)
+                shet[f"{message.chat.id}kmnna1_bot"] += int(1)
+                send = bot.send_message(message.chat.id, f"Ничья!\nСчет:\nВы *" + str(shet[f"{message.chat.id}kmnna1_ig"]) + "*:*" + str(shet[f"{message.chat.id}kmnna1_bot"]) +"* Бот", parse_mode="Markdown")
                 bot.register_next_step_handler(send, kmn_odin)
+                print(f"{message.chat.id}" + str(shet[f"{message.chat.id}kmnna1_ig"]) + ":" + str(shet[f"{message.chat.id}kmnna1_bot"]) + "бот")
             elif (user_message == kamen and bot_knb_text == noshik) or (user_message == noshik and bot_knb_text == bumaga) or (user_message == bumaga and bot_knb_text == kamen):
-                user_count += 1
-                send = bot.send_message(message.chat.id, f"Ты победил!\nСчет:\nВы *{str(user_count)}*:*{str(bot_count)}* Бот", parse_mode="Markdown")
+                shet[f"{message.chat.id}kmnna1_ig"] += int(1)
+                send = bot.send_message(message.chat.id, f"Ты победил!\nСчет:\nВы *" + str(shet[f"{message.chat.id}kmnna1_ig"]) + "*:*" + str(shet[f"{message.chat.id}kmnna1_bot"]) +"* Бот", parse_mode="Markdown")
                 bot.register_next_step_handler(send, kmn_odin)
+                print(f"{message.chat.id}" + str(shet[f"{message.chat.id}kmnna1_ig"]) + ":" + str(shet[f"{message.chat.id}kmnna1_bot"]) + "бот")
             elif (bot_knb_text == kamen and user_message == noshik) or (bot_knb_text == noshik and user_message == bumaga) or (bot_knb_text == bumaga and user_message == kamen):
-                bot_count += 1
-                send = bot.send_message(message.chat.id, f"Бот победил!\nСчет:\nВы *{str(user_count)}*:*{str(bot_count)}* Бот", parse_mode="Markdown")
+                shet[f"{message.chat.id}kmnna1_bot"] += int(1)
+                send = bot.send_message(message.chat.id, f"Бот победил!\nСчет:\nВы *" + str(shet[f"{message.chat.id}kmnna1_ig"]) + "*:*" + str(shet[f"{message.chat.id}kmnna1_bot"]) +"* Бот", parse_mode="Markdown")
                 bot.register_next_step_handler(send, kmn_odin)
+                print(f"{message.chat.id}" + str(shet[f"{message.chat.id}kmnna1_ig"]) + ":" + str(shet[f"{message.chat.id}kmnna1_bot"]) + "бот")
         elif message.text == "/stop":
-            bot.send_message(message.chat.id, f"Вы завершили игру!\nСчет:\nВы *{str(user_count)}*:*{str(bot_count)}* Бот", reply_markup=markup3, parse_mode="Markdown")
+            bot.send_message(message.chat.id, f"Вы завершили игру!\nСчет:\nВы *" + str(shet[f"{message.chat.id}kmnna1_ig"]) + "*:*" + str(shet[f"{message.chat.id}kmnna1_bot"]) +"* Бот", reply_markup=markup3, parse_mode="Markdown")
     elif not message.text in bot_knb1:
         send = bot.send_message(message.chat.id, "Сорян! Я тебя не понял! Выбери значение из списка ниже!")
         bot.register_next_step_handler(send, kmn_odin)
+
 
 def kmn_mp(message):
     markup4 = types.ReplyKeyboardRemove()
@@ -549,9 +550,9 @@ def kmn_mp_vib_ig1(message):
     but5 = types.KeyboardButton("/start")
     markup3.add(but5)
     if message.text in slova:
-        global user2, sh_ig1, sh_ig2
-        sh_ig1 = int(0)
-        sh_ig2 = int(0)
+        global user2
+        shet[f"{igrok1}vs{igrok2}_hod{igrok1}"] = 0
+        shet[f"{igrok1}vs{igrok2}_hod{igrok2}"] = 0
         user2 = f"{message.from_user.first_name}"
         markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
         but1 = types.KeyboardButton(kamen)
@@ -591,14 +592,13 @@ def kmn_mp_vib_ig2(message):
             send = bot.send_message(chat_id=igrok2, text="Игрок выбрал! Выбери Камень, ножницы или бумагу!", reply_markup=markup1)
             bot.register_next_step_handler(send, kmn_mp_itog)
         elif message.text == "/stop":
-            bot.send_message(chat_id=igrok1, text=f"Вы завершили игру!\nОбщий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", reply_markup=markup3, parse_mode="Markdown")
-            bot.send_message(chat_id=igrok2, text=f"Пользователь завершил игру!\nОбщий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", reply_markup=markup3, parse_mode="Markdown")
+            bot.send_message(chat_id=igrok1, text=f"Вы завершили игру!\nОбщий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", reply_markup=markup3, parse_mode="Markdown")
+            bot.send_message(chat_id=igrok2, text=f"Пользователь завершил игру!\nОбщий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", reply_markup=markup3, parse_mode="Markdown")
     elif not message.text in bot_knb1:
         send = bot.send_message(chat_id=igrok1, text="Не совсем тебя понял!")
         bot.register_next_step_handler(send, kmn_mp_vib_ig2)
 
 def kmn_mp_itog(message):
-    global sh_ig1, sh_ig2
     markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but1 = types.KeyboardButton(kamen)
     but2 = types.KeyboardButton(noshik)
@@ -616,31 +616,31 @@ def kmn_mp_itog(message):
             bot.send_message(chat_id=igrok1, text=f"Ты выбрал: *{zn_ig1}*\nДруг выбрал: *{zn_ig2}*", parse_mode="Markdown")
             bot.send_message(chat_id=igrok2, text=f"Ты выбрал: *{zn_ig2}*\nДруг выбрал: *{zn_ig1}*", parse_mode="Markdown")
             if zn_ig1 == zn_ig2:
-                sh_ig1 += 1
-                sh_ig2 += 1
-                bot.send_message(chat_id=igrok1, text=f"Ничья!\nТекущий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", parse_mode="Markdown")
-                bot.send_message(chat_id=igrok2, text=f"Ничья!\nТекущий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}_hod{igrok1}"] += 1
+                shet[f"{igrok1}vs{igrok2}_hod{igrok2}"] += 1
+                bot.send_message(chat_id=igrok1, text=f"Ничья!\nТекущий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", parse_mode="Markdown")
+                bot.send_message(chat_id=igrok2, text=f"Ничья!\nТекущий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", parse_mode="Markdown")
                 send1 = bot.send_message(chat_id=igrok1, text="Выберите Камень, ножницы или бумагу!", reply_markup=markup1)
                 bot.send_message(chat_id=igrok2, text="Подожди выбор первого пользователя!", reply_markup=markup2)
                 bot.register_next_step_handler(send1, kmn_mp_vib_ig2)
             elif (zn_ig1 == kamen and zn_ig2 == noshik) or (zn_ig1 == noshik and zn_ig2 == bumaga) or (zn_ig1 == bumaga and zn_ig2 == kamen):
-                sh_ig1 += 1
-                bot.send_message(chat_id=igrok1, text=f"Ты победил!\nТекущий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", parse_mode="Markdown")
-                bot.send_message(chat_id=igrok2, text=f"Друг победил!\nТекущий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}_hod{igrok1}"] += 1
+                bot.send_message(chat_id=igrok1, text=f"Ты победил!\nТекущий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", parse_mode="Markdown")
+                bot.send_message(chat_id=igrok2, text=f"Друг победил!\nТекущий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", parse_mode="Markdown")
                 send1 = bot.send_message(chat_id=igrok1, text="Выберите Камень, ножницы или бумагу первыми!", reply_markup=markup1)
                 bot.send_message(chat_id=igrok2, text="Подожди выбор первого пользователя!", reply_markup=markup2)
                 bot.register_next_step_handler(send1, kmn_mp_vib_ig2)
             elif (zn_ig1 == kamen and zn_ig2 == bumaga) or (zn_ig1 == noshik and zn_ig2 == kamen) or (zn_ig1 == bumaga and zn_ig2 == noshik):
-                sh_ig2 += 1
-                bot.send_message(chat_id=igrok2, text=f"Ты победил!\nТекущий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", parse_mode="Markdown")
-                bot.send_message(chat_id=igrok1, text=f"Друг победил!\nТекущий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}_hod{igrok2}"] += 1
+                bot.send_message(chat_id=igrok2, text=f"Ты победил!\nТекущий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", parse_mode="Markdown")
+                bot.send_message(chat_id=igrok1, text=f"Друг победил!\nТекущий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", parse_mode="Markdown")
                 send1 = bot.send_message(chat_id=igrok1, text="Выберите Камень, ножницы или бумагу первыми!", reply_markup=markup1)
                 bot.send_message(chat_id=igrok2, text="Подожди выбор первого пользователя!", reply_markup=markup2)
                 bot.register_next_step_handler(send1, kmn_mp_vib_ig2)
-            print(f"{user1} {sh_ig1}:{sh_ig2} {user2}")
+            print(f"Текущий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + "* {user2}")
         elif message.text == "/stop":
-            bot.send_message(chat_id=igrok2, text=f"Вы завершили игру!\nОбщий счет:\nВы *{sh_ig2}*:*{sh_ig1}* {user1}", reply_markup=markup3, parse_mode="Markdown")
-            bot.send_message(chat_id=igrok1, text=f"Пользователь завершил игру!\nОбщий счет:\nВы *{sh_ig1}*:*{sh_ig2}* {user2}", reply_markup=markup3, parse_mode="Markdown")
+            bot.send_message(chat_id=igrok2, text=f"Вы завершили игру!\nОбщий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", reply_markup=markup3, parse_mode="Markdown")
+            bot.send_message(chat_id=igrok1, text=f"Пользователь завершил игру!\nОбщий счет:\nВы *" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok1}"]) + "*:*" + str(shet[f"{igrok1}vs{igrok2}_hod{igrok2}"]) + f"* {user2}", reply_markup=markup3, parse_mode="Markdown")
     elif not message.text in bot_knb1:
         send = bot.send_message(chat_id=igrok2, text="Не совсем тебя понял!")
         bot.register_next_step_handler(send, kmn_mp_itog)
@@ -729,10 +729,6 @@ def kmn_mp_3_1(message):
         bot.register_next_step_handler(send, kmn_mp_3)
 
 def kmn_vib_ig1_3(message):
-    global sh_ig1_3, sh_ig2_3, sh_ig3_3
-    sh_ig1_3 = int(0)
-    sh_ig2_3 = int(0)
-    sh_ig3_3 = int(0)
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but1 = types.KeyboardButton(kamen)
     but2 = types.KeyboardButton(noshik)
@@ -752,6 +748,9 @@ def kmn_vib_ig1_3(message):
     user3 = str(message.from_user.first_name)
     if message.text.title() in vib:
         if message.text == "Да!":
+            shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"] = 0
+            shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"] = 0
+            shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"] = 0
             send = bot.send_message(igrok1, f"Ура! {user3} принял приглашение! Выберите Камень, ножницы или бумагу!", reply_markup=markup)
             bot.send_message(igrok2, f"Ура! {user3} принял приглашения! Подожди выбор {user1}", reply_markup=markup3)
             bot.send_message(igrok3, f"Вы приняли приглашение! Подожди выбор {user1}", reply_markup=markup3)
@@ -785,9 +784,9 @@ def kmn_vib_ig2_3(message):
             bot.send_message(igrok3, f"{user1} сделал выбор! Ждем выбора второго игрока!", reply_markup=markup3)
             bot.register_next_step_handler(send, kmn_vib_ig3_3)
         elif message.text == "/stop":
-            bot.send_message(igrok1, f"Вы завершили игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
-            bot.send_message(igrok2, f"{user1} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
-            bot.send_message(igrok3, f"{user1} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok1, f"Вы завершили игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok2, f"{user1} завершил игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok3, f"{user1} завершил игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
     elif not message.text in bot_knb1:
         send = bot.send_message(igrok1, "Ой, не совсем тебя поняли! Нажми любую кнопку ниже!")
         bot.register_next_step_handler(send, kmn_vib_ig2_3)
@@ -812,9 +811,9 @@ def kmn_vib_ig3_3(message):
             send = bot.send_message(igrok3, f"{user2} выбрал! Настал ваш выбор: выберите камень, ножницы или бумагу!", reply_markup=markup)
             bot.register_next_step_handler(send, kmn_vib_itog_3)
         elif message.text == "/stop":
-            bot.send_message(igrok2, f"Вы завершили игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
-            bot.send_message(igrok1, f"{user2} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
-            bot.send_message(igrok3, f"{user2} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok2, f"Вы завершили игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok1, f"{user2} завершил игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok3, f"{user2} завершил игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
     elif not message.text in bot_knb1:
         send = bot.send_message(igrok2, "Ой, не совсем тебя поняли! Нажми любую кнопку ниже!")
         bot.register_next_step_handler(send, kmn_vib_ig3_3)
@@ -831,7 +830,6 @@ def kmn_vib_itog_3(message):
     markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but5 = types.KeyboardButton("/start")
     markup2.add(but5)
-
     if message.text in bot_knb1:
         if message.text in bot_knb:
             global zn_ig3
@@ -840,56 +838,56 @@ def kmn_vib_itog_3(message):
             bot.send_message(igrok2, f"Ты выбрал: *{zn_ig2}*\n{user1} выбрал: *{zn_ig1}*\n{user3} выбрал: *{zn_ig3}*", parse_mode="Markdown")
             bot.send_message(igrok3, f"Ты выбрал: *{zn_ig3}*\n{user1} выбрал: *{zn_ig1}*\n{user2} выбрал: *{zn_ig2}*", parse_mode="Markdown")
             if zn_ig1 == zn_ig2 and zn_ig2 == zn_ig3:
-                sh_ig1_3 += 1
-                sh_ig2_3 += 1
-                sh_ig3_3 += 1
-                bot.send_message(igrok1, f"Ничья!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok2, f"Ничья!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok3, f"Ничья!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"] += 1
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"] += 1
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"] += 1
+                bot.send_message(igrok1, f"Ничья!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"Ничья!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"Ничья!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
                 send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
                 bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.register_next_step_handler(send, kmn_vib_ig2_3)
             elif (zn_ig1 == kamen and zn_ig2 == noshik and zn_ig2 == zn_ig3) or (zn_ig1 == noshik and zn_ig2 == bumaga and zn_ig2 == zn_ig3) or (zn_ig1 == bumaga and zn_ig2 == kamen and zn_ig2 == zn_ig3):
-                sh_ig1_3 += 1
-                bot.send_message(igrok1, f"Ты победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok2, f"{user1} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok3, f"{user1} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"] += 1
+                bot.send_message(igrok1, f"Ты победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"{user1} победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"{user1} победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
                 send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
                 bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.register_next_step_handler(send, kmn_vib_ig2_3)
             elif (zn_ig2 == kamen and zn_ig1 == noshik and zn_ig1 == zn_ig3) or (zn_ig2 == noshik and zn_ig1 == bumaga and zn_ig1 == zn_ig3) or (zn_ig2 == bumaga and zn_ig1 == kamen and zn_ig1 == zn_ig3):
-                sh_ig2_3 += 1
-                bot.send_message(igrok2, f"Ты победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok1, f"{user2} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok3, f"{user2} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"] += 1
+                bot.send_message(igrok2, f"Ты победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"{user2} победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"{user2} победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
                 send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
                 bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.register_next_step_handler(send, kmn_vib_ig2_3)
             elif (zn_ig3 == kamen and zn_ig1 == noshik and zn_ig1 == zn_ig2) or (zn_ig3 == noshik and zn_ig1 == bumaga and zn_ig1 == zn_ig2) or (zn_ig3 == bumaga and zn_ig1 == kamen and zn_ig1 == zn_ig2):
-                sh_ig3_3 += 1
-                bot.send_message(igrok3, f"Ты победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok2, f"{user3} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok1, f"{user3} победил!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"] += 1
+                bot.send_message(igrok3, f"Ты победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"{user3} победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"{user3} победил!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
                 send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
                 bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.register_next_step_handler(send, kmn_vib_ig2_3)
             elif (zn_ig2 == kamen and zn_ig1 == bumaga and zn_ig1 == zn_ig3) or (zn_ig2 == bumaga and zn_ig1 == noshik and zn_ig1 == zn_ig3) or (zn_ig2 == noshik and zn_ig1 == kamen and zn_ig1 == zn_ig3):
-                sh_ig1_3 += 1
-                sh_ig3_3 += 1
-                bot.send_message(igrok3, f"Ты и {user1} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok1, f"Ты и {user3} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok2, f"{user1} и {user3} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"] += 1
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"] += 1
+                bot.send_message(igrok3, f"Ты и {user1} победили!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"Ты и {user3} победили!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"{user1} и {user3} победили!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
                 send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
                 bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.register_next_step_handler(send, kmn_vib_ig2_3)
             elif (zn_ig1 == kamen and zn_ig2 == bumaga and zn_ig2 == zn_ig3) or (zn_ig1 == bumaga and zn_ig2 == noshik and zn_ig2 == zn_ig3) or (zn_ig1 == noshik and zn_ig2 == kamen and zn_ig2 == zn_ig3):
-                sh_ig2_3 += 1
-                sh_ig3_3 += 1
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"] += 1
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"] += 1
                 bot.send_message(igrok2, f"Ты и {user1} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
                 bot.send_message(igrok1, f"Ты и {user2} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
                 bot.send_message(igrok3, f"{user1} и {user2} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
@@ -898,27 +896,27 @@ def kmn_vib_itog_3(message):
                 bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.register_next_step_handler(send, kmn_vib_ig2_3)
             elif (zn_ig3 == kamen and zn_ig2 == bumaga and zn_ig2 == zn_ig1) or (zn_ig3 == bumaga and zn_ig2 == noshik and zn_ig2 == zn_ig1) or (zn_ig3 == noshik and zn_ig2 == kamen and zn_ig2 == zn_ig1):
-                sh_ig2_3 += 1
-                sh_ig1_3 += 1
-                bot.send_message(igrok2, f"Ты и {user1} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok1, f"Ты и {user2} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok3, f"{user1} и {user2} победили!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"] += 1
+                shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"] += 1
+                bot.send_message(igrok2, f"Ты и {user1} победили!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"Ты и {user2} победили!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"{user1} и {user2} победили!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
                 send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
                 bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.register_next_step_handler(send, kmn_vib_ig2_3)
             elif (zn_ig1 == kamen and zn_ig2 == bumaga and zn_ig3 == noshik) or (zn_ig1 == kamen and zn_ig2 == noshik and zn_ig3 == bumaga) or (zn_ig1 == noshik and zn_ig2 == kamen and zn_ig3 == bumaga) or (zn_ig1 == noshik and zn_ig2 == bumaga and zn_ig3 == kamen) or (zn_ig1 == bumaga and zn_ig2 == kamen and zn_ig3 == noshik) or (zn_ig1 == bumaga and zn_ig2 == noshik and zn_ig3 == kamen):
-                bot.send_message(igrok1, f"Разный выбор!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok2, f"Разный выбор!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
-                bot.send_message(igrok3, f"Разный выбор!\nТекущий счёт:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*", parse_mode="Markdown")
+                bot.send_message(igrok1, f"Разный выбор!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok2, f"Разный выбор!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
+                bot.send_message(igrok3, f"Разный выбор!\nТекущий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown")
                 send = bot.send_message(igrok1, "Выберите Камень, ножницы или бумагу!", reply_markup=markup)
                 bot.send_message(igrok2, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.send_message(igrok3, "Подожди выбор первого пользователя!", reply_markup=markup1)
                 bot.register_next_step_handler(send, kmn_vib_ig2_3)
         elif message.text == "/stop":
-            bot.send_message(igrok3, f"Вы завершили игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
-            bot.send_message(igrok1, f"{user3} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
-            bot.send_message(igrok2, f"{user3} завершил игру!\nОбщий счет:\n{user1}: *{sh_ig1_3}*\n{user2}: *{sh_ig2_3}*\n{user3}: *{sh_ig3_3}*\nБлагодарю за использование!", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok3, f"Вы завершили игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok1, f"{user3} завершил игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
+            bot.send_message(igrok2, f"{user3} завершил игру!\nОбщий счёт:\n{user1}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok1}"]) + f"*\n{user2}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok2}"]) + f"*\n{user3}: *" + str(shet[f"{igrok1}vs{igrok2}vs{igrok3}_hod{igrok3}"]) + "*", parse_mode="Markdown", reply_markup=markup2)
     elif not message.text in bot_knb1:
         send = bot.send_message(igrok3, "Ой, не совсем тебя поняли! Нажми любую кнопку ниже!")
         bot.register_next_step_handler(send, kmn_vib_itog_3)
@@ -945,9 +943,8 @@ def kmn_konflikt(message):
             bot.send_message(igrok1, f"{user1} принял решение пригласить другого игрока! Подождите пока он кого-то пригласит!")
             bot.register_next_step_handler(send, kmn_peredacha)
         elif message.text == "Играть в двоем":
-            global sh_ig1, sh_ig2
-            sh_ig1 = int(0)
-            sh_ig2 = int(0)
+            shet[f"{igrok1}vs{igrok2}_hod{igrok1}"] = int(0)
+            shet[f"{igrok1}vs{igrok2}_hod{igrok2}"] = int(0)
             send = bot.send_message(igrok1, "Окей! Выберите Камень. ножницы или бумагу!", reply_markup=markup2)
             bot.send_message(igrok2, f"{user1} принял решение сыграть только с вами! Подождите его выбор!")
             bot.register_next_step_handler(send, kmn_mp_vib_ig2)
@@ -998,6 +995,7 @@ def randomaizer1(message):
         spis_read = spis.read()
         send = bot.send_message(message.chat.id, f"Окей! Проверь все ли верно:\n*{spis_read}*", reply_markup=markup1, parse_mode="Markdown")
         bot.register_next_step_handler(send, randomaizer_vp)
+
 def randomaizer_vp(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but = types.KeyboardButton("Крутить")
