@@ -1,6 +1,6 @@
 language = 'ru'
-chat = '5897642255'
-chat1 = '5312252852'
+chat = ''
+chat1 = ''
 kamen = "Камень"
 noshik = "Ножницы"
 bumaga = "Бумага"
